@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ListTopBar, SingleItem, Wrapper } from "./ItemList.style";
 
-function ItemList({ list }) {
+function ItemList({ list, selectedCategory }) {
+  const [currentList, setCurrentList] = useState([list]);
+  useEffect(() => {
+    if (!selectedCategory || selectedCategory === "all") {
+      setCurrentList(list);
+    } else {
+      const filterArray = list.filter(
+        (item) => item.Category === selectedCategory
+      );
+      setCurrentList(filterArray);
+    }
+  }, [selectedCategory, list]);
   return (
     <Wrapper>
       <ListTopBar>
         <p>Name</p>
         <p>Quantity</p>
       </ListTopBar>
-      {list.map((item) => (
-        <SingleItem>
+      {currentList.map((item) => (
+        <SingleItem key={item.Name}>
           <p>{item.Name}</p>
           <p>{item.Quantity}</p>
         </SingleItem>

@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Menu,
   Wrapper,
   ImgWrapper,
-  InputFieldWrapp,
-  InputField,
   ControlButton,
 } from "./Main.styles";
 import hello from "../Images/Icons/hello.png";
-import search from "../Images/Icons/search-interface-symbol.png";
-import bell from "../Images/Icons/bell.png";
 import Add_Remove from "./Add_Remove/Add_Remove";
 import ItemList from "./ItemList/ItemList";
+import SearchBar from "./SearchBar/SearchBar";
 
-function Main({ list, categories }) {
+function Main({ list, categories, selectedCategory }) {
+  const [openAddRemove, setOpenAddRemove] = useState(false);
+
+  const toggle = () => {
+    setOpenAddRemove((prev) => !prev);
+  };
+  useEffect(() => {
+    setOpenAddRemove(false);
+  }, [selectedCategory]);
   return (
     <Wrapper>
       <Menu>
@@ -21,17 +26,15 @@ function Main({ list, categories }) {
           <h3>Hello, David</h3>
           <img src={hello} alt="hello icon" />
         </ImgWrapper>
-        <InputFieldWrapp>
-          <InputField>
-            <img src={search} alt="search icon" />
-            <input type="text" placeholder="Search here..." />
-          </InputField>
-          <img src={bell} alt="bell" />
-        </InputFieldWrapp>
+        <SearchBar />
       </Menu>
-      <ControlButton>Add / Remove Item</ControlButton>
-      {/* <ItemList list={list} /> */}
-      <Add_Remove categories={categories} list={list} />
+      <ControlButton onClick={() => toggle()}>
+        {openAddRemove ? "Back" : "Add / Remove Item"}
+      </ControlButton>
+      {!openAddRemove && (
+        <ItemList list={list} selectedCategory={selectedCategory} />
+      )}
+      {openAddRemove && <Add_Remove categories={categories} list={list} />}
     </Wrapper>
   );
 }

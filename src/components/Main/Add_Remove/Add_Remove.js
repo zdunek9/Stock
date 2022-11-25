@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Wrapper } from "./Add_Remove.styles";
 import Confirm_Animation from "../../Animation/Confirm/Confirm_Animation";
+import checkmark from "../../Images/Icons/checkmark.png";
 
 function Add_Remove({ categories, list }) {
   const [selectedTypeRequest, setselectedTypeRequest] = useState("Add");
@@ -9,28 +10,32 @@ function Add_Remove({ categories, list }) {
   const [numberOfItems, setNumberOfItems] = useState("");
   const [filtredArray, setFiltredArray] = useState([]);
   const [success, setSuccess] = useState(false);
+  const [showAllItemsAvailable, setShowAllItemsAvailable] = useState("");
 
   const handleCategoryChange = (event) => {
-    if (event.target.value === "---") {
-      setSelectedCategory("");
-      setSelectedType("");
-      setNumberOfItems("");
-      return;
+    setSelectedCategory("");
+    setSelectedType("");
+    setNumberOfItems("");
+    setShowAllItemsAvailable("");
+    if (event.target.value !== "---") {
+      setSelectedCategory(event.target.value);
+      const newUserList = list.filter(
+        (item) => item.Category === event.target.value
+      );
+      setFiltredArray(newUserList);
     }
-    setSelectedCategory(event.target.value);
-    const newUserList = list.filter(
-      (item) => item.Category === event.target.value
-    );
-    setFiltredArray(newUserList);
   };
 
   const handleTypeChange = (event) => {
     if (event.target.value === "---") {
+      setShowAllItemsAvailable("");
       setSelectedType("");
       setNumberOfItems("");
       return;
     }
     setSelectedType(event.target.value);
+    const findItem = list.find((item) => item.Name === event.target.value);
+    setShowAllItemsAvailable(findItem.Quantity);
   };
   const handleQuantity = (event) => {
     setNumberOfItems(event.target.value);
@@ -41,18 +46,30 @@ function Add_Remove({ categories, list }) {
   const addItem = (event) => {
     event.preventDefault();
     setSuccess(true);
+    setTimeout(() => {
+      setSuccess(false);
+      setSelectedCategory("");
+      setSelectedType("");
+      setNumberOfItems("");
+    }, 1700);
     console.log(selectedTypeRequest, selectedType, numberOfItems);
   };
   return (
     <Wrapper>
       <form onSubmit={addItem}>
-        <label>Select request type: </label>
+        <label>
+          Select request type:
+          {selectedTypeRequest && <img src={checkmark} alt="ok" />}
+        </label>
         <select value={selectedTypeRequest} onChange={handleTypeRequestChange}>
           <option value="Add">Add</option>
           <option value="Remove">Remove</option>
         </select>
 
-        <label>Select category: </label>
+        <label>
+          Select category:
+          {selectedCategory && <img src={checkmark} alt="ok" />}
+        </label>
         <select value={selectedCategory} onChange={handleCategoryChange}>
           <option value="---">---</option>
           {categories.map((item) => (
@@ -63,25 +80,34 @@ function Add_Remove({ categories, list }) {
         </select>
 
         {selectedCategory && (
-          <>
-            <label>Type:</label>
-            <select value={selectedType} onChange={handleTypeChange}>
-            <option value="---">---</option>
-              {filtredArray.map((item) => (
-                <option key={item.Name} value={item.Name}>
-                  {item.Name}
-                </option>
-              ))}
-            </select>
-          </>
+          <div>
+            <div>
+              <label>
+                Type: {selectedType && <img src={checkmark} alt="ok" />}
+              </label>
+              <select value={selectedType} onChange={handleTypeChange}>
+                <option value="---">---</option>
+                {filtredArray.map((item) => (
+                  <option key={item.Name} value={item.Name}>
+                    {item.Name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {showAllItemsAvailable && (
+              <p>Available items: {showAllItemsAvailable}</p>
+            )}
+          </div>
         )}
         {selectedType && (
           <>
-            <label>Quantity: </label>
+            <label>
+              Quantity: {numberOfItems && <img src={checkmark} alt="ok" />}
+            </label>
             <input
               type="number"
               value={numberOfItems}
-              min="0"
+              min="1"
               max="999"
               onChange={handleQuantity}
             />
