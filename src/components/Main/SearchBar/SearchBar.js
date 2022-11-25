@@ -1,15 +1,24 @@
 import React from "react";
-import { InputField, InputFieldWrapp } from "./SearchBar.style";
-import search from "../../Images/Icons/search-interface-symbol.png";
+import { InputFieldWrapp } from "./SearchBar.style";
 import bell from "../../Images/Icons/bell.png";
+import { Autocomplete, TextField } from "@mui/material";
 
-function SearchBar() {
+function SearchBar({ list }) {
+  const tab = [];
+  if (tab.length === 0) {
+    // Create new list for search bar and push via props to component
+    list.forEach((item) => tab.push({ label: item.Name }));
+  }
   return (
     <InputFieldWrapp>
-      <InputField>
-        <img src={search} alt="search icon" />
-        <input type="text" placeholder="Search here..." />
-      </InputField>
+      <Autocomplete
+        disablePortal
+        freeSolo
+        id="combo-box-demo"
+        options={tab}
+        sx={{ width: 400 }}
+        renderInput={(params) => <TextField {...params} label="Search..." />}
+      />
       <img src={bell} alt="bell" />
     </InputFieldWrapp>
   );

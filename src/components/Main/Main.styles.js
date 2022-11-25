@@ -10,6 +10,7 @@ export const Wrapper = styled.header`
 export const Menu = styled.div`
   height: 100px;
   width: 100%;
+  margin-top: 10px;
   margin-bottom: 50px;
   display: flex;
   justify-content: space-between;

@@ -1,25 +1,16 @@
 import React, { useState } from "react";
 import { Wrapper, Name, ItemList, ListItem } from "./Menu.style";
-// import Other from "../Images/Icons/categories.png";
-// import Laptop from "../Images/Icons/laptop.png";
-// import Monitor from "../Images/Icons/monitor.png";
-// import Lexmark from "../Images/Icons/printer.png";
-// import Zebra from "../Images/Icons/receipt.png";
-// import Telephone from "../Images/Icons/telephone.png";
-// import Cable from "../Images/Icons/usb-c-cable.png";
-// import All from "../Images/Icons/all.png";
-// import History from "../Images/Icons/history.png";
 import { FiChevronLeft } from "react-icons/fi";
 
 const menuCategory = [
   "all",
-  "laptops",
-  "monitors",
-  "lexmarks",
-  "zebras",
-  "cables",
-  "telephones",
-  "others",
+  "laptop",
+  "monitor",
+  "lexmark",
+  "zebra",
+  "cable",
+  "telephone",
+  "other",
   "history",
 ];
 
@@ -36,7 +27,7 @@ function Menu({ changeCategory }) {
       </Name>
       <ItemList>
         {menuCategory.map((item) => (
-          <ListItem onClick={() => selectCategory(item)}>
+          <ListItem onClick={() => selectCategory(item)} key={item.id}>
             <div>
               <img src={require(`../Images/Icons/${item}.png`)} alt={item} />
               {singleCategory === item ? (

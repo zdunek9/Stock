@@ -20,7 +20,7 @@ function ItemList({ list, selectedCategory }) {
         <p>Quantity</p>
       </ListTopBar>
       {currentList.map((item) => (
-        <SingleItem key={item.Name}>
+        <SingleItem key={item.id}>
           <p>{item.Name}</p>
           <p>{item.Quantity}</p>
         </SingleItem>
