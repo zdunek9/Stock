@@ -1,7 +1,6 @@
 import React from "react";
 import { Wrapper } from "./Confirm_Animation.styles";
 function Confirm_Animation() {
-  console.log("doing shit");
   return (
     <Wrapper>
       <div className="swal-icon swal-icon--success">

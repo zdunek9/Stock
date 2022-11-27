@@ -5,6 +5,7 @@ export const Wrapper = styled.header`
   width: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 `;
 
 export const Menu = styled.div`
@@ -24,7 +25,7 @@ export const ImgWrapper = styled.div`
     margin-left: 8px;
     height: 20px;
   }
-  h3{
+  h3 {
     font-size: 1.4rem;
   }
 `;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.ul`
   height: 100%;
   margin-right: 20px;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 
 export const SingleItem = styled.li`

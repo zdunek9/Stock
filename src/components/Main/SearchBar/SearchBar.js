@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { InputFieldWrapp } from "./SearchBar.style";
 import bell from "../../Images/Icons/bell.png";
 import { Autocomplete, TextField } from "@mui/material";
 
 function SearchBar({ list }) {
+  const [value, setValue] = useState("");
   const tab = [];
   if (tab.length === 0) {
     // Create new list for search bar and push via props to component
     list.forEach((item) => tab.push({ label: item.Name }));
+  }
+  if(value){
+    console.log(value.label)  // in future do something with selected value
   }
   return (
     <InputFieldWrapp>
@@ -16,6 +20,8 @@ function SearchBar({ list }) {
         freeSolo
         id="combo-box-demo"
         options={tab}
+        value={value}
+        onChange={(event, newValue) => setValue(newValue)}
         sx={{ width: 400 }}
         renderInput={(params) => <TextField {...params} label="Search..." />}
       />

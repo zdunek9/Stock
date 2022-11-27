@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Wrapper } from "./Add_Remove.styles";
+import { Blur, Wrapper } from "./Add_Remove.styles";
 import Confirm_Animation from "../../Animation/Confirm/Confirm_Animation";
 import checkmark from "../../Images/Icons/checkmark.png";
 
@@ -52,71 +52,75 @@ function Add_Remove({ categories, list }) {
       setSelectedType("");
       setNumberOfItems("");
     }, 1700);
-    console.log(selectedTypeRequest, selectedType, numberOfItems);
   };
   return (
-    <Wrapper>
-      <form onSubmit={addItem}>
-        <label>
-          Select request type:
-          {selectedTypeRequest && <img src={checkmark} alt="ok" />}
-        </label>
-        <select value={selectedTypeRequest} onChange={handleTypeRequestChange}>
-          <option value="Add">Add</option>
-          <option value="Remove">Remove</option>
-        </select>
+    <Blur>
+      <Wrapper>
+        <form onSubmit={addItem}>
+          <label>
+            Select request type:
+            {selectedTypeRequest && <img src={checkmark} alt="ok" />}
+          </label>
+          <select
+            value={selectedTypeRequest}
+            onChange={handleTypeRequestChange}
+          >
+            <option value="Add">Add</option>
+            <option value="Remove">Remove</option>
+          </select>
 
-        <label>
-          Select category:
-          {selectedCategory && <img src={checkmark} alt="ok" />}
-        </label>
-        <select value={selectedCategory} onChange={handleCategoryChange}>
-          <option value="---">---</option>
-          {categories.map((item) => (
-            <option key={item.Name} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
+          <label>
+            Select category:
+            {selectedCategory && <img src={checkmark} alt="ok" />}
+          </label>
+          <select value={selectedCategory} onChange={handleCategoryChange}>
+            <option value="---">---</option>
+            {categories.map((item) => (
+              <option key={item.Name} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
 
-        {selectedCategory && (
-          <div>
+          {selectedCategory && (
             <div>
-              <label>
-                Type: {selectedType && <img src={checkmark} alt="ok" />}
-              </label>
-              <select value={selectedType} onChange={handleTypeChange}>
-                <option value="---">---</option>
-                {filtredArray.map((item) => (
-                  <option key={item.Name} value={item.Name}>
-                    {item.Name}
-                  </option>
-                ))}
-              </select>
+              <div>
+                <label>
+                  Type: {selectedType && <img src={checkmark} alt="ok" />}
+                </label>
+                <select value={selectedType} onChange={handleTypeChange}>
+                  <option value="---">---</option>
+                  {filtredArray.map((item) => (
+                    <option key={item.Name} value={item.Name}>
+                      {item.Name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              {showAllItemsAvailable && (
+                <p>Available items: {showAllItemsAvailable}</p>
+              )}
             </div>
-            {showAllItemsAvailable && (
-              <p>Available items: {showAllItemsAvailable}</p>
-            )}
-          </div>
-        )}
-        {selectedType && (
-          <>
-            <label>
-              Quantity: {numberOfItems && <img src={checkmark} alt="ok" />}
-            </label>
-            <input
-              type="number"
-              value={numberOfItems}
-              min="1"
-              max="999"
-              onChange={handleQuantity}
-            />
-          </>
-        )}
-        {numberOfItems && <button>Submit</button>}
-      </form>
-      {success && <Confirm_Animation />}
-    </Wrapper>
+          )}
+          {selectedType && (
+            <>
+              <label>
+                Quantity: {numberOfItems && <img src={checkmark} alt="ok" />}
+              </label>
+              <input
+                type="number"
+                value={numberOfItems}
+                min="1"
+                max="999"
+                onChange={handleQuantity}
+              />
+            </>
+          )}
+          {numberOfItems && <button>Submit</button>}
+        </form>
+        {success && <Confirm_Animation />}
+      </Wrapper>
+    </Blur>
   );
 }
 

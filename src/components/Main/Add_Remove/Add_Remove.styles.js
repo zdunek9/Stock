@@ -1,8 +1,21 @@
 import styled from "styled-components";
 
+export const Blur = styled.div`
+  position: absolute;
+  width: calc(100% - 270px);
+  top:200px;
+  height: calc(100% - 200px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+`;
+
 export const Wrapper = styled.header`
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top:100px;
+  left:50px;
   div {
     display: flex;
     align-items: center;
@@ -40,15 +53,15 @@ export const Wrapper = styled.header`
     font-size: 1.1rem;
     margin: 10px;
   }
-  button{
-    padding:8px 0;
-    border:unset;
+  button {
+    padding: 8px 0;
+    border: unset;
     border-radius: 10px;
     background-color: #e1e6e9;
     cursor: pointer;
   }
-  button:hover{
-    background-color:#d3dade;
+  button:hover {
+    background-color: #d3dade;
   }
   input {
     text-align: right;
