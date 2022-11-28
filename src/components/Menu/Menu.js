@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Wrapper, Name, ItemList, ListItem } from "./Menu.style";
 import { FiChevronLeft } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const menuCategory = [
   "all",
@@ -36,7 +37,16 @@ function Menu({ changeCategory }) {
                 <p>{item}</p>
               )}
             </div>
-            {singleCategory === item && <FiChevronLeft />}
+
+            {singleCategory === item && (
+              <motion.div
+                initial={{ x: 50 }}
+                animate={{ x: 0 }}
+                transition={{ ease: "easeOut", duration: 0.4 }}
+              >
+                <FiChevronLeft />
+              </motion.div>
+            )}
           </ListItem>
         ))}
       </ItemList>

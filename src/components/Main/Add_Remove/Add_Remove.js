@@ -1,56 +1,69 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import { Blur, Wrapper } from "./Add_Remove.styles";
 import Confirm_Animation from "../../Animation/Confirm/Confirm_Animation";
 import checkmark from "../../Images/Icons/checkmark.png";
+import { reducer } from "./Add_RemoveReducer";
+
+const initialState = {
+  selectedTypeRequest: "Add",
+  selectedCategory: "",
+  selectedType: "",
+  numberOfItems: "",
+  filtredArray: [],
+  success: false,
+  showAllItemsAvailable: "",
+};
 
 function Add_Remove({ categories, list }) {
-  const [selectedTypeRequest, setselectedTypeRequest] = useState("Add");
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedType, setSelectedType] = useState("");
-  const [numberOfItems, setNumberOfItems] = useState("");
-  const [filtredArray, setFiltredArray] = useState([]);
-  const [success, setSuccess] = useState(false);
-  const [showAllItemsAvailable, setShowAllItemsAvailable] = useState("");
+  const [state, dispatchReducer] = useReducer(reducer, initialState);
+
+  const clearFields = () => {
+    dispatchReducer({ type: "setSelectedCategory", payload: "" });
+    dispatchReducer({ type: "setSelectedType", payload: "" });
+    dispatchReducer({ type: "setNumberOfItems", payload: "" });
+    dispatchReducer({ type: "setShowAllItemsAvailable", payload: "" });
+  };
 
   const handleCategoryChange = (event) => {
-    setSelectedCategory("");
-    setSelectedType("");
-    setNumberOfItems("");
-    setShowAllItemsAvailable("");
+    clearFields();
     if (event.target.value !== "---") {
-      setSelectedCategory(event.target.value);
+      dispatchReducer({
+        type: "setSelectedCategory",
+        payload: event.target.value,
+      });
       const newUserList = list.filter(
         (item) => item.Category === event.target.value
       );
-      setFiltredArray(newUserList);
+      dispatchReducer({ type: "setFiltredArray", payload: newUserList });
     }
   };
-
   const handleTypeChange = (event) => {
     if (event.target.value === "---") {
-      setShowAllItemsAvailable("");
-      setSelectedType("");
-      setNumberOfItems("");
+      clearFields();
       return;
     }
-    setSelectedType(event.target.value);
+    dispatchReducer({ type: "setSelectedType", payload: event.target.value });
     const findItem = list.find((item) => item.Name === event.target.value);
-    setShowAllItemsAvailable(findItem.Quantity);
+    dispatchReducer({
+      type: "setShowAllItemsAvailable",
+      payload: findItem.Quantity,
+    });
   };
   const handleQuantity = (event) => {
-    setNumberOfItems(event.target.value);
+    dispatchReducer({ type: "setNumberOfItems", payload: event.target.value });
   };
   const handleTypeRequestChange = (event) => {
-    setselectedTypeRequest(event.target.value);
+    dispatchReducer({
+      type: "setselectedTypeRequest",
+      payload: event.target.value,
+    });
   };
   const addItem = (event) => {
     event.preventDefault();
-    setSuccess(true);
+    dispatchReducer({ type: "setSuccess", payload: true });
     setTimeout(() => {
-      setSuccess(false);
-      setSelectedCategory("");
-      setSelectedType("");
-      setNumberOfItems("");
+      dispatchReducer({ type: "setSuccess", payload: false });
+      clearFields();
     }, 1700);
   };
   return (
@@ -59,21 +72,23 @@ function Add_Remove({ categories, list }) {
         <form onSubmit={addItem}>
           <label>
             Select request type:
-            {selectedTypeRequest && <img src={checkmark} alt="ok" />}
+            {state.selectedTypeRequest && <img src={checkmark} alt="ok" />}
           </label>
           <select
-            value={selectedTypeRequest}
+            value={state.selectedTypeRequest}
             onChange={handleTypeRequestChange}
           >
             <option value="Add">Add</option>
             <option value="Remove">Remove</option>
           </select>
-
           <label>
             Select category:
-            {selectedCategory && <img src={checkmark} alt="ok" />}
+            {state.selectedCategory && <img src={checkmark} alt="ok" />}
           </label>
-          <select value={selectedCategory} onChange={handleCategoryChange}>
+          <select
+            value={state.selectedCategory}
+            onChange={handleCategoryChange}
+          >
             <option value="---">---</option>
             {categories.map((item) => (
               <option key={item.Name} value={item}>
@@ -81,47 +96,46 @@ function Add_Remove({ categories, list }) {
               </option>
             ))}
           </select>
-
-          {selectedCategory && (
+          {state.selectedCategory && (
             <div>
               <div>
                 <label>
-                  Type: {selectedType && <img src={checkmark} alt="ok" />}
+                  Type: {state.selectedType && <img src={checkmark} alt="ok" />}
                 </label>
-                <select value={selectedType} onChange={handleTypeChange}>
+                <select value={state.selectedType} onChange={handleTypeChange}>
                   <option value="---">---</option>
-                  {filtredArray.map((item) => (
+                  {state.filtredArray.map((item) => (
                     <option key={item.Name} value={item.Name}>
                       {item.Name}
                     </option>
                   ))}
                 </select>
               </div>
-              {showAllItemsAvailable && (
-                <p>Available items: {showAllItemsAvailable}</p>
+              {state.showAllItemsAvailable && (
+                <p>Available items: {state.showAllItemsAvailable}</p>
               )}
             </div>
           )}
-          {selectedType && (
+          {state.selectedType && (
             <>
               <label>
-                Quantity: {numberOfItems && <img src={checkmark} alt="ok" />}
+                Quantity:
+                {state.numberOfItems && <img src={checkmark} alt="ok" />}
               </label>
               <input
                 type="number"
-                value={numberOfItems}
+                value={state.numberOfItems}
                 min="1"
                 max="999"
                 onChange={handleQuantity}
               />
             </>
           )}
-          {numberOfItems && <button>Submit</button>}
+          {state.numberOfItems && <button>Submit</button>}
         </form>
-        {success && <Confirm_Animation />}
+        {state.success && <Confirm_Animation />}
       </Wrapper>
     </Blur>
   );
 }
-
 export default Add_Remove;

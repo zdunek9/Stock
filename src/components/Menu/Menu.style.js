@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   margin-right: 20px;
   background-color: #e1e6e9;
   user-select: none;
+  overflow: hidden;
 `;
 export const ItemList = styled.ul`
   margin: 30px 0;

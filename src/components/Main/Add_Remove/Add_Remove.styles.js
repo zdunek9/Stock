@@ -5,6 +5,7 @@ export const Blur = styled.div`
   width: calc(100% - 270px);
   top:200px;
   height: calc(100% - 200px);
+  /* height: 100%; */
   display: flex;
   justify-content: center;
   align-items: center;

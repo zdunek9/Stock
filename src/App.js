@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Main from "./components/Main/Main";
 import Menu from "./components/Menu/Menu";
+import { motion } from "framer-motion";
 
 const list = [
   { id: 1, Name: "Lenovo 460s", Quantity: "8", Category: "laptop" },
@@ -47,6 +48,7 @@ function App() {
   return (
     <div className="App">
       <Menu categories={categories} changeCategory={changeCategory} />
+
       <Main
         list={list}
         categories={categories}
