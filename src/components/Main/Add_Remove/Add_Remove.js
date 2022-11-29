@@ -1,8 +1,9 @@
 import React, { useReducer } from "react";
-import { Blur, Wrapper } from "./Add_Remove.styles";
+import { Wrapper } from "./Add_Remove.styles";
 import Confirm_Animation from "../../Animation/Confirm/Confirm_Animation";
 import checkmark from "../../Images/Icons/checkmark.png";
 import { reducer } from "./Add_RemoveReducer";
+import Transfer from "./Transfer/Transfer";
 
 const initialState = {
   selectedTypeRequest: "Add",
@@ -37,6 +38,7 @@ function Add_Remove({ categories, list }) {
       dispatchReducer({ type: "setFiltredArray", payload: newUserList });
     }
   };
+
   const handleTypeChange = (event) => {
     if (event.target.value === "---") {
       clearFields();
@@ -67,75 +69,71 @@ function Add_Remove({ categories, list }) {
     }, 1700);
   };
   return (
-    <Blur>
-      <Wrapper>
-        <form onSubmit={addItem}>
-          <label>
-            Select request type:
-            {state.selectedTypeRequest && <img src={checkmark} alt="ok" />}
-          </label>
-          <select
-            value={state.selectedTypeRequest}
-            onChange={handleTypeRequestChange}
-          >
-            <option value="Add">Add</option>
-            <option value="Remove">Remove</option>
-          </select>
-          <label>
-            Select category:
-            {state.selectedCategory && <img src={checkmark} alt="ok" />}
-          </label>
-          <select
-            value={state.selectedCategory}
-            onChange={handleCategoryChange}
-          >
-            <option value="---">---</option>
-            {categories.map((item) => (
-              <option key={item.Name} value={item}>
-                {item}
-              </option>
-            ))}
-          </select>
-          {state.selectedCategory && (
+    <Wrapper>
+      <form onSubmit={addItem}>
+        <label>
+          Select request type:
+          {state.selectedTypeRequest && <img src={checkmark} alt="ok" />}
+        </label>
+        <select
+          value={state.selectedTypeRequest}
+          onChange={handleTypeRequestChange}
+        >
+          <option value="Add">Add</option>
+          <option value="Remove">Remove</option>
+        </select>
+        <label>
+          Select category:
+          {state.selectedCategory && <img src={checkmark} alt="ok" />}
+        </label>
+        <select value={state.selectedCategory} onChange={handleCategoryChange}>
+          <option value="---">---</option>
+          {categories.map((item) => (
+            <option key={item.Name} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
+        {state.selectedCategory && (
+          <div>
             <div>
-              <div>
-                <label>
-                  Type: {state.selectedType && <img src={checkmark} alt="ok" />}
-                </label>
-                <select value={state.selectedType} onChange={handleTypeChange}>
-                  <option value="---">---</option>
-                  {state.filtredArray.map((item) => (
-                    <option key={item.Name} value={item.Name}>
-                      {item.Name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              {state.showAllItemsAvailable && (
-                <p>Available items: {state.showAllItemsAvailable}</p>
-              )}
-            </div>
-          )}
-          {state.selectedType && (
-            <>
               <label>
-                Quantity:
-                {state.numberOfItems && <img src={checkmark} alt="ok" />}
+                Type: {state.selectedType && <img src={checkmark} alt="ok" />}
               </label>
-              <input
-                type="number"
-                value={state.numberOfItems}
-                min="1"
-                max="999"
-                onChange={handleQuantity}
-              />
-            </>
-          )}
-          {state.numberOfItems && <button>Submit</button>}
-        </form>
+              <select value={state.selectedType} onChange={handleTypeChange}>
+                <option value="---">---</option>
+                {state.filtredArray.map((item) => (
+                  <option key={item.Name} value={item.Name}>
+                    {item.Name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {state.showAllItemsAvailable && (
+              <p>Available items: {state.showAllItemsAvailable}</p>
+            )}
+          </div>
+        )}
+        {state.selectedType && (
+          <>
+            <label>
+              Quantity:
+              {state.numberOfItems && <img src={checkmark} alt="ok" />}
+            </label>
+            <input
+              type="number"
+              value={state.numberOfItems}
+              min="1"
+              max="999"
+              onChange={handleQuantity}
+            />
+          </>
+        )}
+        {state.numberOfItems && <button>Submit</button>}
         {state.success && <Confirm_Animation />}
-      </Wrapper>
-    </Blur>
+      </form>
+      <Transfer list={list} categories={categories} />
+    </Wrapper>
   );
 }
 export default Add_Remove;

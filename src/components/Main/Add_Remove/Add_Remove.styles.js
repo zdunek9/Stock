@@ -1,22 +1,10 @@
 import styled from "styled-components";
 
-export const Blur = styled.div`
-  position: absolute;
-  width: calc(100% - 270px);
-  top:200px;
-  height: calc(100% - 200px);
-  /* height: 100%; */
+export const Wrapper = styled.div`
+  border: 1px solid black;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-`;
+  height: 600px;
 
-export const Wrapper = styled.header`
-  position: absolute;
-  z-index: 1;
-  top:100px;
-  left:50px;
   div {
     display: flex;
     align-items: center;
@@ -37,6 +25,7 @@ export const Wrapper = styled.header`
     margin-left: 5px;
   }
   form {
+    flex-basis: 50%;
     display: flex;
     flex-direction: column;
   }

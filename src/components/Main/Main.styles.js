@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.header`
+export const Wrapper = styled.div`
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  position: relative;
 `;
 
 export const Menu = styled.div`
@@ -30,7 +28,6 @@ export const ImgWrapper = styled.div`
   }
 `;
 export const ControlButton = styled.button`
-  align-self: flex-end;
   margin-bottom: 20px;
   margin-right: 20px;
   border: unset;
@@ -40,4 +37,8 @@ export const ControlButton = styled.button`
   cursor: pointer;
   padding: 10px 15px;
   width: 200px;
+`;
+export const ButtonWrapper = styled.div`
+  width: 100%;
+  text-align: right;
 `;

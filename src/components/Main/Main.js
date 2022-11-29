@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Menu, Wrapper, ImgWrapper, ControlButton } from "./Main.styles";
+import {
+  Menu,
+  Wrapper,
+  ImgWrapper,
+  ControlButton,
+  ButtonWrapper,
+} from "./Main.styles";
 import hello from "../Images/Icons/hello.png";
 import Add_Remove from "./Add_Remove/Add_Remove";
 import ItemList from "./ItemList/ItemList";
@@ -13,7 +19,7 @@ function Main({ list, categories, selectedCategory }) {
     setOpenAddRemove((prev) => !prev);
   };
   useEffect(() => {
-    setOpenAddRemove(false)
+    setOpenAddRemove(false);
   }, [selectedCategory]);
 
   return (
@@ -25,14 +31,21 @@ function Main({ list, categories, selectedCategory }) {
         </ImgWrapper>
         <SearchBar list={list} />
       </Menu>
+      <ButtonWrapper>
         <ControlButton onClick={() => toggle()}>
           {openAddRemove ? "Back" : "Add / Remove Item"}
         </ControlButton>
-        {openAddRemove && <Add_Remove categories={categories} list={list} />}
-        {selectedCategory !== "history" && (
-          <ItemList list={list} selectedCategory={selectedCategory} />
-        )}
-        {selectedCategory === "history" && <History />}
+      </ButtonWrapper>
+      {openAddRemove ? (
+        <Add_Remove categories={categories} list={list} />
+      ) : (
+        <>
+          {selectedCategory !== "history" && (
+            <ItemList list={list} selectedCategory={selectedCategory} />
+          )}
+          {selectedCategory === "history" && <History />}
+        </>
+      )}
     </Wrapper>
   );
 }

@@ -10,7 +10,10 @@ export const Wrapper = styled.div`
 `;
 export const ItemList = styled.ul`
   margin: 30px 0;
+  padding-bottom: 50px;
+  /* border-bottom: 1px solid rgb(179, 179, 179); */
 `;
+
 export const Name = styled.div`
   height: 100px;
   line-height: 100px;
@@ -27,12 +30,13 @@ export const ListItem = styled.li`
   justify-content: space-between;
   align-items: center;
   margin: 0;
-  div{
+  padding: 20px 30px;
+
+  cursor: pointer;
+  div {
     display: flex;
     align-items: center;
   }
-  padding: 20px 30px;
-  cursor: pointer;
   p {
     margin-left: 10px;
     font-weight: 500;
@@ -46,7 +50,7 @@ export const ListItem = styled.li`
       props.singleCategory === props.item ? "block" : "none"};
     font-size: 1.3rem;
   }
-  .selectedCategory{
+  .selectedCategory {
     font-weight: 700;
     font-size: 1rem;
   }
