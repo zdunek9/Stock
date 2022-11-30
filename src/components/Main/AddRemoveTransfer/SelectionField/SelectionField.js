@@ -11,7 +11,9 @@ function SelectionField({
     <>
       <label>
         {labelTekst}
-        {selectedField && <img src={checkmark} alt="ok" />}
+        {selectedField && selectedField !== "---" && (
+          <img src={checkmark} alt="ok" />
+        )}
       </label>
       <select value={selectedField} onChange={changeHandler}>
         <option value="---">---</option>

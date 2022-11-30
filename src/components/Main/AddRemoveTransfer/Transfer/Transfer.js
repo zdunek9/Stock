@@ -2,23 +2,34 @@ import React, { useReducer } from "react";
 import { Wrapper } from "./Transfer.style";
 import checkmark from "../../../Images/Icons/checkmark.png";
 import SelectionField from "../SelectionField/SelectionField";
-import Confirm_Animation from "../../../Animation/Confirm/Confirm_Animation";
+import ConfirmAnimation from "../../../Animation/Confirm/ConfirmAnimation";
 import { reducer } from "./TransferReducer";
 
-function Transfer({ list, categories }) {
-  const initialState = {
-    selectedCategory: "",
-    selectedType: "",
-    numberOfItems: "",
-    filtredArray: [],
-    success: false,
-  };
+const initialState = {
+  selectSite: "",
+  selectedCategory: "",
+  selectedType: "",
+  numberOfItems: "",
+  filtredArray: [],
+  success: false,
+};
 
+function Transfer({ list, categories, siteList }) {
   const [state, dispatchReducer] = useReducer(reducer, initialState);
   const clearFields = () => {
+    dispatchReducer({ type: "setSelectedCategory", payload: "" });
     dispatchReducer({ type: "setSelectedType", payload: "" });
     dispatchReducer({ type: "setNumberOfItems", payload: "" });
     dispatchReducer({ type: "setShowAllItemsAvailable", payload: "" });
+  };
+
+  const handleSiteChange = (event) => {
+    if (event.target.value === "---") {
+      clearFields();
+      dispatchReducer({ type: "setSelectedSite", payload: "" });
+      return;
+    }
+    dispatchReducer({ type: "setSelectedSite", payload: event.target.value });
   };
   const handleCategoryChange = (event) => {
     clearFields();
@@ -49,6 +60,7 @@ function Transfer({ list, categories }) {
   const handleQuantity = (event) => {
     dispatchReducer({ type: "setNumberOfItems", payload: event.target.value });
   };
+
   const addItem = (event) => {
     event.preventDefault();
     dispatchReducer({ type: "setSuccess", payload: true });
@@ -61,17 +73,27 @@ function Transfer({ list, categories }) {
     <Wrapper>
       <form onSubmit={addItem}>
         <SelectionField
-          labelTekst={"Select Category"}
-          optionList={categories}
-          changeHandler={handleCategoryChange}
-          selectedField={state.selectedCategory}
+          labelTekst={"Select Site"}
+          optionList={siteList}
+          changeHandler={handleSiteChange}
+          selectedField={state.selectSite}
         />
-        <SelectionField
-          labelTekst={"Type"}
-          optionList={state.filtredArray}
-          changeHandler={handleTypeChange}
-          selectedField={state.selectedType}
-        />
+        {state.selectSite && (
+          <SelectionField
+            labelTekst={"Select category"}
+            optionList={categories}
+            changeHandler={handleCategoryChange}
+            selectedField={state.selectedCategory}
+          />
+        )}
+        {state.selectedCategory && (
+          <SelectionField
+            labelTekst={"Type"}
+            optionList={state.filtredArray}
+            changeHandler={handleTypeChange}
+            selectedField={state.selectedType}
+          />
+        )}
         {state.showAllItemsAvailable && (
           <p>Available items: {state.showAllItemsAvailable}</p>
         )}
@@ -90,9 +112,8 @@ function Transfer({ list, categories }) {
             />
           </>
         )}
-
         {state.numberOfItems && <button>Submit</button>}
-        {state.success && <Confirm_Animation />}
+        {state.success && <ConfirmAnimation />}
       </form>
     </Wrapper>
   );

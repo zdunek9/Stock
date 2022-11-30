@@ -7,12 +7,13 @@ import {
   ButtonWrapper,
 } from "./Main.styles";
 import hello from "../Images/Icons/hello.png";
-import Add_Remove from "./Add_Remove/Add_Remove";
+
 import ItemList from "./ItemList/ItemList";
 import SearchBar from "./SearchBar/SearchBar";
 import History from "./History/History";
+import AddRemoveTransfer from "./AddRemoveTransfer/AddRemoveTransfer";
 
-function Main({ list, categories, selectedCategory }) {
+function Main({ list, categories, selectedCategory, siteList }) {
   const [openAddRemove, setOpenAddRemove] = useState(false);
 
   const toggle = () => {
@@ -37,7 +38,7 @@ function Main({ list, categories, selectedCategory }) {
         </ControlButton>
       </ButtonWrapper>
       {openAddRemove ? (
-        <Add_Remove categories={categories} list={list} />
+        <AddRemoveTransfer categories={categories} list={list} siteList={siteList} />
       ) : (
         <>
           {selectedCategory !== "history" && (

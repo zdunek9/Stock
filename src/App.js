@@ -38,6 +38,8 @@ const categories = [
   "zebra",
   "other",
 ];
+
+const siteList = ["Lodz", "Gdansk", "Barcelona", "Werona", "Porto"];
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -52,6 +54,7 @@ function App() {
         list={list}
         categories={categories}
         selectedCategory={selectedCategory}
+        siteList={siteList}
       />
     </div>
   );

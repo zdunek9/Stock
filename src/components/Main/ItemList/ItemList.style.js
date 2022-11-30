@@ -4,19 +4,6 @@ export const Wrapper = styled.ul`
   height: 80vh;
   margin-right: 20px;
   overflow-y: auto;
-  /* &::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: #e6e6e6;
-    border-radius: 100px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #b6c2c9;
-    border-radius: 100px;
-  } */
 `;
 
 export const SingleItem = styled.li`

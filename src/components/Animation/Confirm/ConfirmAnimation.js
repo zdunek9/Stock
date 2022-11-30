@@ -1,5 +1,5 @@
 import React from "react";
-import { Wrapper } from "./Confirm_Animation.styles";
+import { Wrapper } from "./ConfirmAnimation.styles";
 function Confirm_Animation() {
   return (
     <Wrapper>

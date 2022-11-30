@@ -1,18 +1,17 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  border: 1px solid black;
+  position: absolute;
+  top: 50px;
+  left: 400px;
+  /* transform: translate(-50%, -50%); */
+  border:1px solid black;
   display: flex;
-  height: 600px;
-
+  align-items: center;
   div {
     display: flex;
-    align-items: center;
-    div {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
+    flex-direction: column;
+    align-items: flex-start;
   }
   p {
     margin-left: 15px;

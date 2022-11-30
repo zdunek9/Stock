@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.ul`
-margin-right: 20px;
+  margin-right: 20px;
+  height: 80vh;
 `;
 
 export const SingleItem = styled.li`

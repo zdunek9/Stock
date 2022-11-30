@@ -1,9 +1,9 @@
 import React, { useReducer } from "react";
-import { Wrapper } from "./Add_Remove.styles";
-import Confirm_Animation from "../../Animation/Confirm/Confirm_Animation";
-import checkmark from "../../Images/Icons/checkmark.png";
-import { reducer } from "./Add_RemoveReducer";
-import Transfer from "./Transfer/Transfer";
+import { Wrapper } from "./AddRemove.styles";
+import ConfirmAnimation from "../../../Animation/Confirm/ConfirmAnimation";
+import checkmark from "../../../Images/Icons/checkmark.png";
+import { reducer } from "./AddRemoveReducer";
+import SelectionField from "../SelectionField/SelectionField";
 
 const initialState = {
   selectedTypeRequest: "Add",
@@ -15,7 +15,7 @@ const initialState = {
   showAllItemsAvailable: "",
 };
 
-function Add_Remove({ categories, list }) {
+function AddRemove({ categories, list }) {
   const [state, dispatchReducer] = useReducer(reducer, initialState);
 
   const clearFields = () => {
@@ -35,7 +35,8 @@ function Add_Remove({ categories, list }) {
       const newUserList = list.filter(
         (item) => item.Category === event.target.value
       );
-      dispatchReducer({ type: "setFiltredArray", payload: newUserList });
+      const toArray = newUserList.map((element) => element.Name);
+      dispatchReducer({ type: "setFiltredArray", payload: toArray });
     }
   };
 
@@ -82,37 +83,23 @@ function Add_Remove({ categories, list }) {
           <option value="Add">Add</option>
           <option value="Remove">Remove</option>
         </select>
-        <label>
-          Select category:
-          {state.selectedCategory && <img src={checkmark} alt="ok" />}
-        </label>
-        <select value={state.selectedCategory} onChange={handleCategoryChange}>
-          <option value="---">---</option>
-          {categories.map((item) => (
-            <option key={item.Name} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
+        <SelectionField
+          labelTekst={"Select category:"}
+          optionList={categories}
+          changeHandler={handleCategoryChange}
+          selectedField={state.selectedCategory}
+        />
+
         {state.selectedCategory && (
-          <div>
-            <div>
-              <label>
-                Type: {state.selectedType && <img src={checkmark} alt="ok" />}
-              </label>
-              <select value={state.selectedType} onChange={handleTypeChange}>
-                <option value="---">---</option>
-                {state.filtredArray.map((item) => (
-                  <option key={item.Name} value={item.Name}>
-                    {item.Name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            {state.showAllItemsAvailable && (
-              <p>Available items: {state.showAllItemsAvailable}</p>
-            )}
-          </div>
+          <SelectionField
+            labelTekst={"Type:"}
+            optionList={state.filtredArray}
+            changeHandler={handleTypeChange}
+            selectedField={state.selectedType}
+          />
+        )}
+        {state.showAllItemsAvailable && (
+          <p>Available items: {state.showAllItemsAvailable}</p>
         )}
         {state.selectedType && (
           <>
@@ -130,10 +117,9 @@ function Add_Remove({ categories, list }) {
           </>
         )}
         {state.numberOfItems && <button>Submit</button>}
-        {state.success && <Confirm_Animation />}
+        {state.success && <ConfirmAnimation />}
       </form>
-      <Transfer list={list} categories={categories} />
     </Wrapper>
   );
 }
-export default Add_Remove;
+export default AddRemove;
