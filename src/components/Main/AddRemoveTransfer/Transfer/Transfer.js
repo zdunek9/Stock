@@ -4,6 +4,17 @@ import checkmark from "../../../Images/Icons/checkmark.png";
 import SelectionField from "../SelectionField/SelectionField";
 import ConfirmAnimation from "../../../Animation/Confirm/ConfirmAnimation";
 import { reducer } from "./TransferReducer";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: 0.2,
+  },
+};
 
 const initialState = {
   selectSite: "",
@@ -70,7 +81,12 @@ function Transfer({ list, categories, siteList }) {
     }, 1700);
   };
   return (
-    <Wrapper>
+    <Wrapper
+      as={motion.div}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <form onSubmit={addItem}>
         <SelectionField
           labelTekst={"Select Site"}
@@ -98,7 +114,7 @@ function Transfer({ list, categories, siteList }) {
           <p>Available items: {state.showAllItemsAvailable}</p>
         )}
         {state.selectedType && (
-          <>
+          <motion.div variants={containerVariants}>
             <label>
               Quantity:
               {state.numberOfItems && <img src={checkmark} alt="ok" />}
@@ -110,9 +126,11 @@ function Transfer({ list, categories, siteList }) {
               max="999"
               onChange={handleQuantity}
             />
-          </>
+          </motion.div>
         )}
-        {state.numberOfItems && <button>Submit</button>}
+        {state.numberOfItems && (
+          <motion.button variants={containerVariants}>Submit</motion.button>
+        )}
         {state.success && <ConfirmAnimation />}
       </form>
     </Wrapper>

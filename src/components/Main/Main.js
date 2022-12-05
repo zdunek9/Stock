@@ -27,7 +27,7 @@ function Main({ list, categories, selectedCategory, siteList }) {
     <Wrapper>
       <Menu>
         <ImgWrapper>
-          <h3>Hello, David</h3>
+          <h3>Hello, Admin</h3>
           <img src={hello} alt="hello icon" />
         </ImgWrapper>
         <SearchBar list={list} />

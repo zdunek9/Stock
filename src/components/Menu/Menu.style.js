@@ -7,11 +7,11 @@ export const Wrapper = styled.div`
   background-color: #e1e6e9;
   user-select: none;
   overflow: hidden;
+  position: relative;
 `;
 export const ItemList = styled.ul`
   margin: 30px 0;
   padding-bottom: 50px;
-  /* border-bottom: 1px solid rgb(179, 179, 179); */
 `;
 
 export const Name = styled.div`
@@ -54,4 +54,17 @@ export const ListItem = styled.li`
     font-weight: 700;
     font-size: 1rem;
   }
+`;
+
+export const LogoutButton = styled.button`
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  font-size: 1.2rem;
+  padding: 15px 40px;
+  border: unset;
+  transform: translate(-50%);
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #eef1f6;
 `;

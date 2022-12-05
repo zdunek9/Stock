@@ -1,5 +1,6 @@
 import React from "react";
 import checkmark from "../../../Images/Icons/checkmark.png";
+import { motion } from "framer-motion";
 
 function SelectionField({
   labelTekst,
@@ -8,7 +9,11 @@ function SelectionField({
   selectedField,
 }) {
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2 }}
+    >
       <label>
         {labelTekst}
         {selectedField && selectedField !== "---" && (
@@ -23,7 +28,7 @@ function SelectionField({
           </option>
         ))}
       </select>
-    </>
+    </motion.div>
   );
 }
 

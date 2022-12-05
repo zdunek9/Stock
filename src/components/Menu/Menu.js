@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Wrapper, Name, ItemList, ListItem } from "./Menu.style";
+import { Wrapper, Name, ItemList, ListItem, LogoutButton } from "./Menu.style";
 import { FiChevronLeft } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -15,7 +15,7 @@ const menuCategory = [
   "history",
 ];
 
-function Menu({ changeCategory }) {
+function Menu({ changeCategory, setIsLoggedIn }) {
   const [singleCategory, setSingleCategory] = useState("All");
   const selectCategory = (category) => {
     setSingleCategory(category);
@@ -54,6 +54,7 @@ function Menu({ changeCategory }) {
           </ListItem>
         ))}
       </ItemList>
+      <LogoutButton onClick={() => setIsLoggedIn(false)}>Logout</LogoutButton>
     </Wrapper>
   );
 }

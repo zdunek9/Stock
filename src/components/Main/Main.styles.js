@@ -4,13 +4,13 @@ export const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   position: relative;
+  overflow: hidden;
 `;
 
 export const Menu = styled.div`
   height: 100px;
   width: 100%;
   margin-top: 10px;
-  margin-bottom: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;

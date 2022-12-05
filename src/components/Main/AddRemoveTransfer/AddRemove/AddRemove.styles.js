@@ -2,10 +2,8 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   position: absolute;
-  top: 50px;
-  left: 400px;
-  /* transform: translate(-50%, -50%); */
-  border:1px solid black;
+  top: 160px;
+  left: 575px;
   display: flex;
   align-items: center;
   div {

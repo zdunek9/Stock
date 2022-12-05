@@ -11,7 +11,7 @@ function SearchBar({ list }) {
     list.forEach((item) => tab.push({ label: item.Name }));
   }
   if(value){
-    console.log(value.label)  // in future do something with selected value
+    // in future do something with selected value
   }
   return (
     <InputFieldWrapp>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import LoginPage from "./components/LoginPage/LoginPage";
 import Main from "./components/Main/Main";
 import Menu from "./components/Menu/Menu";
 
@@ -20,8 +21,8 @@ const list = [
   { id: 14, Name: "Lexmark 611", Quantity: "11", Category: "lexmark" },
   { id: 15, Name: "Zebra gk490", Quantity: "15", Category: "zebra" },
   { id: 16, Name: "Zebra zd620 lan", Quantity: "2", Category: "zebra" },
-  { id: 17, Name: "Zebra gx480", Quantity: "3", Category: "zebr" },
-  { id: 18, Name: "Zebra zd620 wifi ", Quantity: "10", Category: "zebr" },
+  { id: 17, Name: "Zebra gx480", Quantity: "3", Category: "zebra" },
+  { id: 18, Name: "Zebra zd620 wifi ", Quantity: "10", Category: "zebra" },
   { id: 19, Name: "Dect phones", Quantity: "25", Category: "other" },
   { id: 20, Name: "Bateries 480s", Quantity: "11", Category: "other" },
   { id: 21, Name: "Dock stations", Quantity: "74", Category: "other" },
@@ -42,20 +43,31 @@ const categories = [
 const siteList = ["Lodz", "Gdansk", "Barcelona", "Werona", "Porto"];
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const changeCategory = (cat) => {
     setSelectedCategory(cat);
   };
   return (
     <div className="App">
-      <Menu categories={categories} changeCategory={changeCategory} />
-
-      <Main
-        list={list}
-        categories={categories}
-        selectedCategory={selectedCategory}
-        siteList={siteList}
-      />
+      {isLoggedIn && (
+        <>
+          <Menu
+            categories={categories}
+            changeCategory={changeCategory}
+            setIsLoggedIn={setIsLoggedIn}
+          />
+          <Main
+            list={list}
+            categories={categories}
+            selectedCategory={selectedCategory}
+            siteList={siteList}
+          />
+        </>
+      )}
+      {!isLoggedIn && (
+        <LoginPage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
+      )}
     </div>
   );
 }

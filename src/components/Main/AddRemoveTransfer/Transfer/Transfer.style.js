@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  position: absolute;
+  top: 160px;
+  left: 105px;
   display: flex;
   align-items: center;
   div {

@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.ul`
-  height: 80vh;
+  height: 750px;
   margin-right: 20px;
   overflow-y: auto;
 `;
 
 export const SingleItem = styled.li`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   p {
     text-align: center;
@@ -15,6 +16,7 @@ export const SingleItem = styled.li`
     margin: 15px;
     font-weight: 500;
   }
+
   &:nth-child(odd) {
     background-color: #eef1f6;
   }
@@ -30,6 +32,10 @@ export const ListTopBar = styled.li`
     margin: 15px;
     font-weight: 700;
     font-size: 1.3rem;
+    cursor: pointer;
+  }
+  p:first-child{
+    cursor:unset;
   }
 `;
 
