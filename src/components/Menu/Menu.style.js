@@ -8,10 +8,25 @@ export const Wrapper = styled.div`
   user-select: none;
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 export const ItemList = styled.ul`
+  flex-grow: 1;
   margin: 30px 0;
-  padding-bottom: 50px;
+  div {
+    display: flex;
+    align-items: center;
+  }
+  p {
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  img {
+    height: 23px;
+  }
 `;
 
 export const Name = styled.div`
@@ -28,10 +43,29 @@ export const Name = styled.div`
 export const ListItem = styled.li`
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin: 0;
+  align-items: center;
   padding: 20px 30px;
+  cursor: pointer;
 
+  svg {
+    display: ${(props) =>
+      props.singleCategory === props.item ? "block" : "none"};
+    font-size: 1.3rem;
+  }
+  .selectedCategory {
+    font-weight: 700;
+    font-size: 1rem;
+  }
+`;
+
+export const LogoutButton = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  align-items: center;
+  padding: 30px;
+  border-top: 2px solid rgb(179, 179, 179);
   cursor: pointer;
   div {
     display: flex;
@@ -45,26 +79,4 @@ export const ListItem = styled.li`
   img {
     height: 23px;
   }
-  svg {
-    display: ${(props) =>
-      props.singleCategory === props.item ? "block" : "none"};
-    font-size: 1.3rem;
-  }
-  .selectedCategory {
-    font-weight: 700;
-    font-size: 1rem;
-  }
-`;
-
-export const LogoutButton = styled.button`
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  font-size: 1.2rem;
-  padding: 15px 40px;
-  border: unset;
-  transform: translate(-50%);
-  cursor: pointer;
-  border-radius: 15px;
-  background-color: #eef1f6;
 `;

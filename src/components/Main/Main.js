@@ -7,7 +7,6 @@ import {
   ButtonWrapper,
 } from "./Main.styles";
 import hello from "../Images/Icons/hello.png";
-
 import ItemList from "./ItemList/ItemList";
 import SearchBar from "./SearchBar/SearchBar";
 import History from "./History/History";

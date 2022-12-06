@@ -36,7 +36,7 @@ export const ControlButton = styled.button`
   background-color: #e1e6e9;
   cursor: pointer;
   padding: 10px 15px;
-  width: 200px;
+  width: 220px;
 `;
 export const ButtonWrapper = styled.div`
   width: 100%;

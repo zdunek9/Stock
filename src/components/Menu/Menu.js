@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Wrapper, Name, ItemList, ListItem, LogoutButton } from "./Menu.style";
 import { FiChevronLeft } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
+import logout from "../Images/Icons/logout.png";
 
 const menuCategory = [
   "all",
@@ -54,7 +55,12 @@ function Menu({ changeCategory, setIsLoggedIn }) {
           </ListItem>
         ))}
       </ItemList>
-      <LogoutButton onClick={() => setIsLoggedIn(false)}>Logout</LogoutButton>
+      <LogoutButton onClick={() => setIsLoggedIn(false)}>
+        <div>
+          <img src={logout} alt="logout" />
+          <p>Logout</p>
+        </div>
+      </LogoutButton>
     </Wrapper>
   );
 }

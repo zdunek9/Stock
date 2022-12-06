@@ -41,6 +41,7 @@ const categories = [
 ];
 
 const siteList = ["Lodz", "Gdansk", "Barcelona", "Werona", "Porto"];
+
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
