@@ -3,23 +3,38 @@ import { Container, WelcomeText } from "./LoginPage.styles";
 import Login from "./Login";
 import Welcome from "./Welcome";
 import { motion, AnimatePresence } from "framer-motion";
+import Signup from "./Signup";
 
 const LoginPage = ({ setIsLoggedIn }) => {
   const [toggle, setToggle] = useState(null);
-
   useEffect(() => {
     setToggle(null);
   }, []);
   return (
     <Container>
-      <WelcomeText>
-        <AnimatePresence>
-          {!toggle && <Welcome setToggle={setToggle} />}
+      <WelcomeText
+        as={motion.div}
+        animate={
+          toggle===1
+            ? { width: "320px", height: "330px" }
+            : toggle === 2
+            ? { width: "320px", height: "410px" }
+            : { width: "450px", height: "300px" }
+        }
+        transition={{ duration: 0.5 }}
+      >
+        <AnimatePresence initial={false}>
+          {!toggle && <Welcome key="Welcome" setToggle={setToggle} />}
           {toggle === 1 && (
             <Login
-              as={motion.div}
-              key="2"
-
+              key="Login"
+              setIsLoggedIn={setIsLoggedIn}
+              setToggle={setToggle}
+            />
+          )}
+          {toggle === 2 && (
+            <Signup
+              key="Signup"
               setIsLoggedIn={setIsLoggedIn}
               setToggle={setToggle}
             />

@@ -5,6 +5,16 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  min-width: 400px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  img {
+    height: 70px;
+    margin-bottom: 20px;
+  }
   p {
     margin-bottom: 10px;
     font-size: 1.1rem;

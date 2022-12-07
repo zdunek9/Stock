@@ -8,14 +8,12 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   background: linear-gradient(to bottom, #333, #666);
-  img {
-    height: 70px;
-    margin-bottom: 20px;
-  }
 `;
 export const WelcomeText = styled.div`
-  /* position: relative; */
-  padding: 30px;
+  position: relative;
+  width: 450px;
+  height: 300px;
+
   background: #fff;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
   border-radius: 10px;

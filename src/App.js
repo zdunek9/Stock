@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import LoadingAnimation from "./components/Animation/LoadingAnimation";
 import LoginPage from "./components/LoginPage/LoginPage";
 import Main from "./components/Main/Main";
 import Menu from "./components/Menu/Menu";
@@ -51,7 +52,7 @@ function App() {
   };
   return (
     <div className="App">
-      {isLoggedIn && (
+      {/* {isLoggedIn && (
         <>
           <Menu
             categories={categories}
@@ -68,7 +69,8 @@ function App() {
       )}
       {!isLoggedIn && (
         <LoginPage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
-      )}
+      )} */}
+      <LoadingAnimation />
     </div>
   );
 }

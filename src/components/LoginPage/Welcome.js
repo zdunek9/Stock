@@ -1,16 +1,29 @@
 import React from "react";
 import { Wrapper } from "./Welcome.style";
 import logo from "../Images/Icons/logo.png";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+
+const variants = {
+  initial: {
+    x: -500,
+  },
+  animate: {
+    x: 0,
+  },
+  exit: {
+    x: -500,
+  },
+};
 
 function Welcome({ setToggle }) {
   return (
     <Wrapper
       as={motion.div}
-      initial={{ x: 300}}
-      animate={{ x: 0}}
-      exit={{ x: -300}}
-      transition={{ ease: "easeOut", duration: 2 }}
+      variants={variants}
+      animate="animate"
+      initial="initial"
+      exit="exit"
+      transition={{ duration: 0.5 }}
     >
       <img src={logo} alt="logo" />
       <p>Welcome to stockApp</p>
