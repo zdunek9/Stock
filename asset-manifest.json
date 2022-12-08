@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.611c98f9.css",
+    "main.js": "/static/js/main.40ed000c.js",
+    "static/media/swap.gif": "/static/media/swap.1aaf478f6d08a11020f2.gif",
+    "static/media/import.gif": "/static/media/import.de73e8ced488c84f96da.gif",
+    "static/media/hello.png": "/static/media/hello.4477872f35ebc8fcf2ec.png",
+    "static/media/out-of-stock.png": "/static/media/out-of-stock.29aaad27dedd543b6e2b.png",
+    "static/media/cable.png": "/static/media/cable.402dbc9b4165e8394be5.png",
+    "static/media/checkmark.png": "/static/media/checkmark.837d8d85dea4f73d4273.png",
+    "static/media/all.png": "/static/media/all.ff7078835026a8aa3a75.png",
+    "static/media/history.png": "/static/media/history.65e3b3d173374e2b860a.png",
+    "static/media/warning.png": "/static/media/warning.5f7d3df9847a69f09a3e.png",
+    "static/media/lexmark.png": "/static/media/lexmark.c25d00ed3a15275975da.png",
+    "static/media/import.png": "/static/media/import.bf2a091d799efe787197.png",
+    "static/media/swap.png": "/static/media/swap.e87623bf043bdb31cbbd.png",
+    "static/media/bell.png": "/static/media/bell.5846d4b1994ad4088108.png",
+    "static/media/logo.png": "/static/media/logo.b51ed30aaf1e045bc171.png",
+    "index.html": "/index.html",
+    "main.611c98f9.css.map": "/static/css/main.611c98f9.css.map",
+    "main.40ed000c.js.map": "/static/js/main.40ed000c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.611c98f9.css",
+    "static/js/main.40ed000c.js"
+  ]
+}
