@@ -1,3 +1,10 @@
+:root{ 
+   --gray1: #d3dade;
+   --gray2:#d9d9d9;
+   --darkerGray1:#737373
+  }
+
+
 body {
   margin: 0;
   padding: 0;

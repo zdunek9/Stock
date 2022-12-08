@@ -26,6 +26,7 @@ export const ListTopBar = styled.li`
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid black;
+  user-select: none;
   p {
     text-align: center;
     width: 150px;
@@ -34,8 +35,8 @@ export const ListTopBar = styled.li`
     font-size: 1.3rem;
     cursor: pointer;
   }
-  p:first-child{
-    cursor:unset;
+  p:first-child {
+    cursor: unset;
   }
 `;
 

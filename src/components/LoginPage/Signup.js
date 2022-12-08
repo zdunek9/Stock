@@ -36,7 +36,7 @@ function Signup({ setIsLoggedIn, setToggle }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    //It may not be the most precise verification, but that's not the point here
+    //It may not be the best verification, but that's not the point here
     
     if (password !== confirmPassword) {
       setError("Password do not match");

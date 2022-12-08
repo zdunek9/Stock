@@ -21,7 +21,7 @@ function Main({ list, categories, selectedCategory, siteList }) {
   useEffect(() => {
     setOpenAddRemove(false);
   }, [selectedCategory]);
-
+  
   return (
     <Wrapper>
       <Menu>
@@ -36,16 +36,17 @@ function Main({ list, categories, selectedCategory, siteList }) {
           {openAddRemove ? "Back" : "Add / Remove Item"}
         </ControlButton>
       </ButtonWrapper>
-      {openAddRemove ? (
-        <AddRemoveTransfer categories={categories} list={list} siteList={siteList} />
-      ) : (
-        <>
-          {selectedCategory !== "history" && (
-            <ItemList list={list} selectedCategory={selectedCategory} />
-          )}
-          {selectedCategory === "history" && <History />}
-        </>
+      {openAddRemove && (
+        <AddRemoveTransfer
+          categories={categories}
+          list={list}
+          siteList={siteList}
+        />
       )}
+      {selectedCategory !== "history" && !openAddRemove && (
+        <ItemList list={list} selectedCategory={selectedCategory} />
+      )}
+      {selectedCategory === "history" && !openAddRemove && <History />}
     </Wrapper>
   );
 }

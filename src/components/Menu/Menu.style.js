@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   width: 300px;
   height: 100%;
   margin-right: 20px;
-  background-color: #e1e6e9;
+  background-color:var(--gray1);
   user-select: none;
   overflow: hidden;
   position: relative;
@@ -23,6 +23,7 @@ export const ItemList = styled.ul`
     margin-left: 10px;
     font-weight: 500;
     font-size: 0.9rem;
+    letter-spacing: 1px;
   }
   img {
     height: 23px;

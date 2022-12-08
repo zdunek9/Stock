@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom, #333, #666);
+  background: linear-gradient(to bottom, #666666, #999999);
   img {
     height: 200px;
     width: 200px;

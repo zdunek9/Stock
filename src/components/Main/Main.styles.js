@@ -35,6 +35,8 @@ export const ControlButton = styled.button`
   border-radius: 20px;
   background-color: #e1e6e9;
   cursor: pointer;
+  user-select: none;
+
   padding: 10px 15px;
   width: 220px;
 `;

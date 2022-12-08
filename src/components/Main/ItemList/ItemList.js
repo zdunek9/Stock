@@ -5,7 +5,7 @@ import warning from "../../Images/stockIcons/warning.png";
 import sent from "../../Images/stockIcons/sent.png";
 
 function ItemList({ list, selectedCategory }) {
-  const [numbers, setNumbers] = useState(list);
+  const [numbers, setNumbers] = useState([]);
   const [sortOrder, setSortOrder] = useState("ascending");
 
   const sortNumbers = () => {

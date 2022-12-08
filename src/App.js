@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import LoadingAnimation from "./components/Animation/LoadingAnimation";
 import LoginPage from "./components/LoginPage/LoginPage";
@@ -46,18 +46,34 @@ const siteList = ["Lodz", "Gdansk", "Barcelona", "Werona", "Porto"];
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [showAnimationState, setShowAnimationState] = useState(false); // used for imitate fetching data
   const changeCategory = (cat) => {
     setSelectedCategory(cat);
   };
+
+  const showAnimation = (log) => {
+    const changeState = () => {
+      setIsLoggedIn(log);
+      setShowAnimationState(false);
+    };
+    if(log){
+      setTimeout(() => changeState(), 2000);
+    }else{
+      setTimeout(() => changeState(), 1000);
+
+    }
+    setShowAnimationState(true);
+  };
+
   return (
     <div className="App">
-      {/* {isLoggedIn && (
+      {showAnimationState && <LoadingAnimation />}
+      {isLoggedIn && !showAnimationState && (
         <>
           <Menu
             categories={categories}
             changeCategory={changeCategory}
-            setIsLoggedIn={setIsLoggedIn}
+            setIsLoggedIn={showAnimation}
           />
           <Main
             list={list}
@@ -67,10 +83,12 @@ function App() {
           />
         </>
       )}
-      {!isLoggedIn && (
-        <LoginPage setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
-      )} */}
-      <LoadingAnimation />
+        {!isLoggedIn && !showAnimationState && (
+          <LoginPage
+            setIsLoggedIn={showAnimation}
+            isLoggedIn={isLoggedIn}
+          />
+        )}
     </div>
   );
 }

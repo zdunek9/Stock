@@ -37,6 +37,7 @@ function Login({ setIsLoggedIn, setToggle }) {
     // was successful if the username is "admin" and the password is
     // "password".
     if (username === "admin" && password === "password") {
+      
       setIsLoggedIn(true);
     } else if (username === "" || password === "") {
       setError("Username or password cannot be empty");
