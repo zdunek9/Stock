@@ -8,6 +8,8 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   background: linear-gradient(to bottom, #666666, #999999);
+  @media(max-width:600px){
+  }
 `;
 export const WelcomeText = styled.div`
   position: relative;
@@ -17,4 +19,8 @@ export const WelcomeText = styled.div`
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   overflow: hidden;
+  @media (max-width:600px){
+  width: 100%;
+  height: 375px;
+  }
 `;

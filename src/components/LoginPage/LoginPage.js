@@ -7,20 +7,29 @@ import Signup from "./Signup";
 
 const LoginPage = ({ setIsLoggedIn }) => {
   const [toggle, setToggle] = useState(null);
+  const isMobile = window.innerWidth < 600;
   useEffect(() => {
     setToggle(null);
   }, []);
+
+  let boxVariants = {};
+  if (!isMobile) {
+    boxVariants = {
+      animate:
+        toggle === 1
+          ? { width: "320px", height: "330px" }
+          : toggle === 2
+          ? { width: "320px", height: "410px" }
+          : { width: "450px", height: "300px" },
+    };
+  }
+  console.log(isMobile)
   return (
     <Container>
       <WelcomeText
         as={motion.div}
-        animate={
-          toggle===1
-            ? { width: "320px", height: "330px" }
-            : toggle === 2
-            ? { width: "320px", height: "410px" }
-            : { width: "450px", height: "300px" }
-        }
+        variants={boxVariants}
+        animate="animate"
         transition={{ duration: 0.5 }}
       >
         <AnimatePresence initial={false}>

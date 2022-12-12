@@ -83,6 +83,7 @@ function AddRemove({ categories, list }) {
   return (
     <Wrapper
       as={motion.div}
+      success={state.success}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -135,8 +136,8 @@ function AddRemove({ categories, list }) {
         {state.numberOfItems && (
           <motion.button variants={containerVariants}>Submit</motion.button>
         )}
-        {state.success && <ConfirmAnimation />}
       </form>
+      {state.success && <ConfirmAnimation />}
     </Wrapper>
   );
 }

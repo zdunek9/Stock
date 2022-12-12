@@ -5,12 +5,8 @@ export const Wrapper = styled.div`
   top: 160px;
   left: 105px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
   p {
     margin-left: 15px;
     font-style: italic;
@@ -62,5 +58,27 @@ export const Wrapper = styled.div`
   }
   input[type="number"] {
     -moz-appearance: textfield;
+  }
+  @media (max-width: 900px) {
+    position: unset;
+    label {
+      font-size: 0.9rem;
+    }
+    form {
+      display: ${(prop) => (prop.success ? "none" : "unset")};
+    }
+    select,
+    input,
+    button {
+      font-size: 0.9rem;
+      margin: 10px;
+    }
+  }
+  @media (max-width: 600px) {
+    select,
+    input,
+    button {
+      width: 50vw;
+    }
   }
 `;

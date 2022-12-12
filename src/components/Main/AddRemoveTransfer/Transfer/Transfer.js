@@ -82,6 +82,7 @@ function Transfer({ list, categories, siteList }) {
   };
   return (
     <Wrapper
+      success={state.success}
       as={motion.div}
       variants={containerVariants}
       initial="hidden"
@@ -131,8 +132,8 @@ function Transfer({ list, categories, siteList }) {
         {state.numberOfItems && (
           <motion.button variants={containerVariants}>Submit</motion.button>
         )}
-        {state.success && <ConfirmAnimation />}
       </form>
+        {state.success && <ConfirmAnimation />}
     </Wrapper>
   );
 }

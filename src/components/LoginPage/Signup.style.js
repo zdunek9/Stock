@@ -13,6 +13,14 @@ export const Form = styled.form`
   div {
     text-align: right;
   }
+  @media (max-width: 600px) {
+  width: 100%;
+  top: 0;
+  left: 0;
+  div {
+    text-align: right;
+  }
+  }
 `;
 export const ErrorMessage = styled.div`
   position: absolute;

@@ -7,6 +7,16 @@ import GifSentImport from "../../Images/stockIcons/import.gif";
 export const Wrapper = styled.div`
   height: 700px;
   position: relative;
+  @media (max-width: 900px) {
+    position: unset;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  @media (max-height: 800px) {
+    height: 70%;
+  }
 `;
 
 export const TransferImage = styled.div`
@@ -15,6 +25,10 @@ export const TransferImage = styled.div`
   transform: scale(0.73);
   background-size: cover;
   background-image: url(${TransferImport});
+  @media (max-width: 900px) {
+    height: 40px;
+    width: 40px;
+  }
 `;
 
 export const SentImage = styled.div`
@@ -26,6 +40,10 @@ export const SentImage = styled.div`
   &:hover {
     transform: scale(1);
     background-image: url(${GifSentImport});
+  }
+  @media (max-width: 900px) {
+    height: 40px;
+    width: 40px;
   }
 `;
 export const SelectType = styled.div`
@@ -56,5 +74,31 @@ export const SelectType = styled.div`
   p {
     font-size: 1.4rem;
     letter-spacing: 1px;
+  }
+  @media (max-width: 1100px) {
+    div:first-child {
+    margin-right: 120px;
+  }
+  }
+  @media (max-width: 900px) {
+    width: 100%;
+    position: unset;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    div:first-child {
+      margin-right: 30px;
+    }
+    p {
+      font-size: 0.9rem;
+    }
+  }
+  @media (max-width: 600px) {
+    div:first-child {
+      margin-right: 10px;
+    }
+    p {
+      font-size: 0.7rem;
+    }
   }
 `;

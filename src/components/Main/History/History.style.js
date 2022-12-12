@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const Wrapper = styled.ul`
   margin-right: 20px;
   height: 80vh;
+  @media (max-width: 900px) {
+    margin-right: 10px;
+  }
 `;
 
 export const SingleItem = styled.li`
@@ -17,6 +20,13 @@ export const SingleItem = styled.li`
   &:nth-child(odd) {
     background-color: #eef1f6;
   }
+  @media (max-width: 900px) {
+    p {
+      margin: 10px 5px;
+      font-size: 0.6rem;
+      overflow: hidden;
+    }
+  }
 `;
 
 export const ListTopBar = styled.li`
@@ -27,5 +37,13 @@ export const ListTopBar = styled.li`
     margin: 20px 10px;
     font-weight: 700;
     font-size: 1.3rem;
+  }
+  @media (max-width: 900px) {
+    grid-template-columns: 15% 20% 28% 14% 23%;
+    p {
+      margin: 10px 5px;
+      font-size: 0.7rem;
+      overflow: hidden;
+    }
   }
 `;

@@ -12,4 +12,9 @@ export const InputFieldWrapp = styled.div`
     margin-left: 10px;
     height: 50px;
   }
+  @media (max-width: 900px){
+    justify-content: center;
+    margin: 0 10px;
+    width: 90%;
+}
 `;

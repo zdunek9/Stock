@@ -40,4 +40,23 @@ export const Wrapper = styled.div`
       margin-right: 15px;
     }
   }
+  @media (max-width: 600px) {
+    position: unset;
+    min-width: unset;
+    img{
+      height: 90px;
+    }
+    p {
+      text-align: center;
+      font-size: 1.3rem;
+    }
+    p:nth-child(3) {
+    font-size: 0.8rem;
+  }
+    button {
+      &:hover {
+        background: unset;
+      }
+    }
+  }
 `;

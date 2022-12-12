@@ -4,13 +4,17 @@ export const Wrapper = styled.div`
   width: 300px;
   height: 100%;
   margin-right: 20px;
-  background-color:var(--gray1);
+  background-color: var(--gray1);
   user-select: none;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media (max-width: 900px) {
+    width: 100px;
+    margin-right: 10px;
+  }
 `;
 export const ItemList = styled.ul`
   flex-grow: 1;
@@ -28,6 +32,9 @@ export const ItemList = styled.ul`
   img {
     height: 23px;
   }
+  @media (max-height: 700px){
+    margin:10px 0;
+}
 `;
 
 export const Name = styled.div`
@@ -39,6 +46,9 @@ export const Name = styled.div`
     margin: 0;
     padding: 0 40px;
   }
+  @media (max-width: 900px){
+    display: none;
+}
 `;
 
 export const ListItem = styled.li`
@@ -58,6 +68,14 @@ export const ListItem = styled.li`
     font-weight: 700;
     font-size: 1rem;
   }
+  @media (max-width: 900px) {
+    p {
+      display: none;
+    }
+  }
+  @media (max-height: 700px){
+    padding: 12px 30px;
+}
 `;
 
 export const LogoutButton = styled.div`
@@ -80,4 +98,9 @@ export const LogoutButton = styled.div`
   img {
     height: 23px;
   }
+  @media (max-width: 900px){
+    p{
+      display: none;
+    }
+}
 `;

@@ -14,6 +14,9 @@ export const Menu = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 900px){
+    justify-content: flex-end;
+}
 `;
 
 export const ImgWrapper = styled.div`
@@ -26,6 +29,9 @@ export const ImgWrapper = styled.div`
   h3 {
     font-size: 1.4rem;
   }
+  @media (max-width: 900px){
+    display: none;
+}
 `;
 export const ControlButton = styled.button`
   margin-bottom: 20px;
@@ -36,11 +42,13 @@ export const ControlButton = styled.button`
   background-color: #e1e6e9;
   cursor: pointer;
   user-select: none;
-
   padding: 10px 15px;
   width: 220px;
 `;
 export const ButtonWrapper = styled.div`
   width: 100%;
   text-align: right;
+  @media (max-width: 900px){
+    text-align: center;
+}
 `;

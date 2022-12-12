@@ -4,6 +4,12 @@ export const Wrapper = styled.ul`
   height: 750px;
   margin-right: 20px;
   overflow-y: auto;
+  @media (max-width: 900px) {
+    height: 80%;
+  }
+  @media (max-height: 800px) {
+    height: 70%;
+  }
 `;
 
 export const SingleItem = styled.li`
@@ -19,6 +25,12 @@ export const SingleItem = styled.li`
 
   &:nth-child(odd) {
     background-color: #eef1f6;
+  }
+  @media (max-width: 900px) {
+    p {
+      font-size: 0.8rem;
+      margin: 10px;
+    }
   }
 `;
 
@@ -38,6 +50,12 @@ export const ListTopBar = styled.li`
   p:first-child {
     cursor: unset;
   }
+  @media (max-width: 900px) {
+    p {
+      font-size: 1.1rem;
+      margin: 10px;
+    }
+  }
 `;
 
 export const StatusIcon = styled.span`
@@ -47,5 +65,10 @@ export const StatusIcon = styled.span`
     height: 30px;
     margin: 0;
     padding: 0;
+  }
+  @media (max-width: 900px) {
+    img {
+      height: 25px;
+    }
   }
 `;
