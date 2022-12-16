@@ -12,14 +12,17 @@ export const Form = styled.form`
   left: 0;
   div {
     text-align: right;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* position: relative; */
   }
   @media (max-width: 600px) {
-  width: 100%;
-  top: 0;
-  left: 0;
-  div {
-    text-align: right;
-  }
+    width: 100%;
+    top: 0;
+    left: 0;
+    div {
+      text-align: right;
+    }
   }
 `;
 export const ErrorMessage = styled.div`
@@ -47,7 +50,8 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  margin-top: 10px;
+  user-select: none;
+  position: relative;
   padding: 10px 20px;
   font-size: 16px;
   background: #00bcd4;
@@ -56,10 +60,8 @@ export const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   transition: 0.2s;
+  top: ${(prop) => `${prop.randomPosition}px`};
   &:hover {
-    background: #0095a8;
-  }
-  &:first-child {
-    margin-right: 15px;
+    background: #0095a8 !important;
   }
 `;

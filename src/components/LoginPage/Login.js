@@ -37,7 +37,6 @@ function Login({ setIsLoggedIn, setToggle }) {
     // was successful if the username is "admin" and the password is
     // "password".
     if (username === "admin" && password === "password") {
-      
       setIsLoggedIn(true);
     } else if (username === "" || password === "") {
       setError("Username or password cannot be empty");
@@ -53,7 +52,7 @@ function Login({ setIsLoggedIn, setToggle }) {
   return (
     <Form
       as={motion.form}
-      onSubmit={handleSubmit}
+      onSubmit={(e) => handleSubmit(e)}
       variants={variants}
       animate="animate"
       initial="initial"
@@ -61,6 +60,7 @@ function Login({ setIsLoggedIn, setToggle }) {
       transition={{ duration: 0.5 }}
     >
       {error && isPresent && <ErrorMessage>{error}</ErrorMessage>}
+
       <Label>
         Username:
         <Input
@@ -81,8 +81,10 @@ function Login({ setIsLoggedIn, setToggle }) {
       </Label>
       <br />
       <div>
-        <Button onClick={() => setToggle(null)}>Back</Button>
         <Button type="submit">Log in</Button>
+        <Button type="button" onClick={() => setToggle(null)}>
+          Back
+        </Button>
       </div>
     </Form>
   );

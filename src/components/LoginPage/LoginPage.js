@@ -23,7 +23,6 @@ const LoginPage = ({ setIsLoggedIn }) => {
           : { width: "450px", height: "300px" },
     };
   }
-  console.log(isMobile)
   return (
     <Container>
       <WelcomeText

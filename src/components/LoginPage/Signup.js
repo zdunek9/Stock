@@ -17,8 +17,10 @@ function Signup({ setIsLoggedIn, setToggle }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
   const [error, setError] = useState(false);
+  const [passwordMatch, setPasswordMatch] = useState(false);
+  const [flee, setflee] = useState(false);
+  const [position, setPosition] = useState(-100);
   const userRef = useRef();
   const isPresent = useIsPresent();
 
@@ -35,29 +37,59 @@ function Signup({ setIsLoggedIn, setToggle }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    //It may not be the best verification, but that's not the point
-    
-    if (password !== confirmPassword) {
-      setError("Password do not match");
-      setPassword("");
-      setConfirmPassword("");
-      return;
-    } else if (username === "" || password === "") {
-      setError("Username or password cannot be empty");
-      return;
+    if (username !== "" && passwordMatch) {
+      setIsLoggedIn(true);
     }
-    setIsLoggedIn(true);
   }
+
+  const fleeButton = () => {
+    if (username !== "" && passwordMatch) {
+      setflee(false);
+      setPosition(0);
+      setError("");
+      setPasswordMatch(true);
+      return;
+    } else if (username === "") {
+      setError("Username cannot be empty");
+    } else if (password === "" || confirmPassword === "") {
+      setError("Password cannot be empty");
+    } else if (
+      !passwordMatch &&
+      password.length > 0 &&
+      confirmPassword.length > 0
+    ) {
+      setError("Password do not match");
+    }
+    setflee(true);
+    setPosition((prev) => (prev >= 50 ? -40 : 50));
+  };
+  useEffect(() => {
+    if (passwordMatch) {
+      setflee(false);
+      setPosition(0);
+    }
+  }, [passwordMatch]);
+  useEffect(() => {
+    if (password === confirmPassword && username !== "" && password !== "") {
+      setPasswordMatch(true);
+      setError("");
+    } else {
+      setPasswordMatch(false);
+    }
+    setflee(false);
+    setPosition(0);
+  }, [confirmPassword, password, username]);
+
   useEffect(() => {
     setTimeout(() => userRef.current.focus(), 500);
   }, []);
+
   return (
     <Form
       as={motion.form}
-      onSubmit={handleSubmit}
       variants={variants}
       animate="animate"
+      onSubmit={(e) => handleSubmit(e)}
       initial="initial"
       exit="exit"
       transition={{ duration: 0.5 }}
@@ -92,8 +124,21 @@ function Signup({ setIsLoggedIn, setToggle }) {
       </Label>
       <br />
       <div>
-        <Button onClick={() => setToggle(null)}>Back</Button>
-        <Button type="submit">Sign up</Button>
+        <Button
+          style={
+            passwordMatch
+              ? { backgroundColor: "#00bcd4", marginRight: "15px" }
+              : { backgroundColor: "#008799", marginRight: "15px" }
+          }
+          randomPosition={flee ? position : 0}
+          onMouseOver={() => fleeButton()}
+          type="submit"
+        >
+          Sign up
+        </Button>
+        <Button type="button" onClick={() => setToggle(null)}>
+          Back
+        </Button>
       </div>
     </Form>
   );
