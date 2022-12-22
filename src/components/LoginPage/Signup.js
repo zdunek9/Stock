@@ -23,6 +23,7 @@ function Signup({ setIsLoggedIn, setToggle }) {
   const [position, setPosition] = useState(-100);
   const userRef = useRef();
   const isPresent = useIsPresent();
+  const isMobile = window.innerWidth < 600;
 
   function handleUsernameChange(event) {
     setUsername(event.target.value);
@@ -38,7 +39,19 @@ function Signup({ setIsLoggedIn, setToggle }) {
   function handleSubmit(event) {
     event.preventDefault();
     if (username !== "" && passwordMatch) {
+      setError("");
       setIsLoggedIn(true);
+      return;
+    } else if (username === "") {
+      setError("Username cannot be empty");
+    } else if (password === "" || confirmPassword === "") {
+      setError("Password cannot be empty");
+    } else if (
+      !passwordMatch &&
+      password.length > 0 &&
+      confirmPassword.length > 0
+    ) {
+      setError("Password do not match");
     }
   }
 
@@ -63,6 +76,7 @@ function Signup({ setIsLoggedIn, setToggle }) {
     setflee(true);
     setPosition((prev) => (prev >= 50 ? -40 : 50));
   };
+
   useEffect(() => {
     if (passwordMatch) {
       setflee(false);
@@ -131,7 +145,7 @@ function Signup({ setIsLoggedIn, setToggle }) {
               : { backgroundColor: "#008799", marginRight: "15px" }
           }
           randomPosition={flee ? position : 0}
-          onMouseOver={() => fleeButton()}
+          onMouseOver={() => (isMobile ? "" : fleeButton())}
           type="submit"
         >
           Sign up
