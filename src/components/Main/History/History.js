@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ListTopBar, SingleItem, Wrapper } from "./History.style";
 
 const History_List = [
@@ -40,17 +40,133 @@ const History_List = [
 ];
 
 function History() {
+  const [historyList, setHistoryList] = useState(History_List);
+  const [dateSortOrder, setDateSortOrder] = useState(false);
+  const [quantitySortOrder, setQuantitySortOrder] = useState(false);
+  const [nameSortOrder, setNameSortOrder] = useState(false);
+  const [userSortOrder, setUserSortOrder] = useState(false);
+  const [commentSortOrder, setCommentSortOrder] = useState(false);
+
+  const sortDateFunction = () => {
+    if (dateSortOrder) {
+      setHistoryList(
+        History_List.sort((a, b) => new Date(a.Date) - new Date(b.Date))
+      );
+      setDateSortOrder(false);
+    } else {
+      setHistoryList(
+        History_List.sort((a, b) => new Date(b.Date) - new Date(a.Date))
+      );
+      setDateSortOrder(true);
+    }
+  };
+  const sortQuantityFunction = () => {
+    if (quantitySortOrder) {
+      setHistoryList(History_List.sort((a, b) => a.Quantity - b.Quantity));
+      setQuantitySortOrder(false);
+    } else {
+      setHistoryList(History_List.sort((a, b) => b.Quantity - a.Quantity));
+      setQuantitySortOrder(true);
+    }
+  };
+  const sortNameFunction = () => {
+    if (nameSortOrder) {
+      setHistoryList(
+        History_List.sort((a, b) => {
+          if (a.Name < b.Name) {
+            return 1;
+          }
+          if (a.Name > b.Name) {
+            return -1;
+          }
+          return 0;
+        })
+      );
+      setNameSortOrder(false);
+    } else {
+      setHistoryList(
+        History_List.sort((a, b) => {
+          if (a.Name < b.Name) {
+            return -1;
+          }
+          if (a.Name > b.Name) {
+            return 1;
+          }
+          return 0;
+        })
+      );
+      setNameSortOrder(true);
+    }
+  };
+  const sortUserFunction = () => {
+    if (userSortOrder) {
+      setHistoryList(
+        History_List.sort((a, b) => {
+          if (a.User < b.User) {
+            return 1;
+          }
+          if (a.User > b.User) {
+            return -1;
+          }
+          return 0;
+        })
+      );
+      setUserSortOrder(false);
+    } else {
+      setHistoryList(
+        History_List.sort((a, b) => {
+          if (a.User < b.User) {
+            return -1;
+          }
+          if (a.User > b.User) {
+            return 1;
+          }
+          return 0;
+        })
+      );
+      setUserSortOrder(true);
+    }
+  };
+  const sortCommentFunction = () => {
+    if (commentSortOrder) {
+      setHistoryList(
+        History_List.sort((a, b) => {
+          if (a.Comment < b.Comment) {
+            return 1;
+          }
+          if (a.Comment > b.Comment) {
+            return -1;
+          }
+          return 0;
+        })
+      );
+      setCommentSortOrder(false);
+    } else {
+      setHistoryList(
+        History_List.sort((a, b) => {
+          if (a.Comment < b.Comment) {
+            return -1;
+          }
+          if (a.Comment > b.Comment) {
+            return 1;
+          }
+          return 0;
+        })
+      );
+      setCommentSortOrder(true);
+    }
+  };
   return (
     <Wrapper>
       <ListTopBar>
-        <p>Name</p>
-        <p>Quantity</p>
-        <p>User</p>
-        <p>Date</p>
-        <p>Comment</p>
+        <p onClick={() => sortNameFunction()}>Name</p>
+        <p onClick={() => sortQuantityFunction()}>Quantity</p>
+        <p onClick={() => sortUserFunction()}>User</p>
+        <p onClick={() => sortDateFunction()}>Date</p>
+        <p onClick={() => sortCommentFunction()}>Comment</p>
       </ListTopBar>
-      {History_List.map((item) => (
-        <SingleItem>
+      {historyList.map((item) => (
+        <SingleItem key={item.Name}>
           <p>{item.Name}</p>
           <p>{item.Quantity}</p>
           <p>{item.User}</p>

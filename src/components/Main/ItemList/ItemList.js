@@ -37,7 +37,7 @@ function ItemList({ list, selectedCategory }) {
         <p onClick={() => sortNumbers()}>Status</p>
       </ListTopBar>
       {numbers.map((item) => (
-        <SingleItem key={item.id}>
+        <SingleItem key={item.Name}>
           <p>{item.Name}</p>
           <p>{item.Quantity}</p>
           <p>

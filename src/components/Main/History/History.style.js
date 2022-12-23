@@ -34,6 +34,7 @@ export const ListTopBar = styled.li`
   grid-template-columns: 15% 14% 34% 14% 23%;
   border-bottom: 2px solid black;
   p {
+    cursor: pointer;
     margin: 20px 10px;
     font-weight: 700;
     font-size: 1.3rem;
