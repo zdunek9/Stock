@@ -14,6 +14,14 @@ export const Wrapper = styled.div`
     justify-content: flex-start;
     align-items: center;
   }
+  @media (max-height: 850px) {
+    position: unset;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
   @media (max-height: 800px) {
     height: 70%;
   }
@@ -26,6 +34,10 @@ export const TransferImage = styled.div`
   background-size: cover;
   background-image: url(${TransferImport});
   @media (max-width: 900px) {
+    height: 40px;
+    width: 40px;
+  }
+  @media (max-height: 850px) {
     height: 40px;
     width: 40px;
   }
@@ -42,6 +54,10 @@ export const SentImage = styled.div`
     background-image: url(${GifSentImport});
   }
   @media (max-width: 900px) {
+    height: 40px;
+    width: 40px;
+  }
+  @media (max-width: 850px) {
     height: 40px;
     width: 40px;
   }
@@ -77,10 +93,23 @@ export const SelectType = styled.div`
   }
   @media (max-width: 1100px) {
     div:first-child {
-    margin-right: 120px;
-  }
+      margin-right: 120px;
+    }
   }
   @media (max-width: 900px) {
+    width: 100%;
+    position: unset;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    div:first-child {
+      margin-right: 30px;
+    }
+    p {
+      font-size: 0.9rem;
+    }
+  }
+  @media (max-height: 850px) {
     width: 100%;
     position: unset;
     display: flex;

@@ -32,7 +32,7 @@ export const ItemList = styled.ul`
   img {
     height: 23px;
   }
-  @media (max-height: 700px){
+  @media (max-height: 800px){
     margin:10px 0;
 }
 `;
@@ -73,7 +73,7 @@ export const ListItem = styled.li`
       display: none;
     }
   }
-  @media (max-height: 700px){
+  @media (max-height: 800px){
     padding: 12px 30px;
 }
 `;

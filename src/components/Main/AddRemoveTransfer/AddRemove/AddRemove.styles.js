@@ -83,6 +83,21 @@ export const Wrapper = styled.div`
       margin: 10px;
     }
   }
+  @media (max-height: 850px) {
+    position: unset;
+    label {
+      font-size: 0.9rem;
+    }
+    form {
+      display: ${(prop) => (prop.success ? "none" : "unset")};
+    }
+    select,
+    input,
+    button {
+      font-size: 0.9rem;
+      margin: 10px;
+    }
+  }
   @media (max-width: 600px) {
     select,
     input,
