@@ -14,4 +14,4 @@ You can login to the application: user: admin, password: password.
 + Sort by quantity, status, user, date, comment and history name
 
 
-To preview the application go here: https://boisterous-narwhal-57c135.netlify.app/
+To preview the application go here: https://sapp91.netlify.app
