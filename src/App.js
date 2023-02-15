@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 import "./App.css";
 import LoadingAnimation from "./components/Animation/LoadingAnimation";
 import LoginPage from "./components/LoginPage/LoginPage";
@@ -42,6 +43,7 @@ const categories = [
 ];
 
 const siteList = ["Lodz", "Gdansk", "Barcelona", "Werona", "Porto"];
+const queryClient = new QueryClient();
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -56,40 +58,37 @@ function App() {
       setIsLoggedIn(log);
       setShowAnimationState(false);
     };
-    if(log){
+    if (log) {
       setTimeout(() => changeState(), 2000);
-    }else{
+    } else {
       setTimeout(() => changeState(), 1000);
-
     }
     setShowAnimationState(true);
   };
 
   return (
-    <div className="App">
-      {showAnimationState && <LoadingAnimation />}
-      {isLoggedIn && !showAnimationState && (
-        <>
-          <Menu
-            categories={categories}
-            changeCategory={changeCategory}
-            setIsLoggedIn={showAnimation}
-          />
-          <Main
-            list={list}
-            categories={categories}
-            selectedCategory={selectedCategory}
-            siteList={siteList}
-          />
-        </>
-      )}
-        {!isLoggedIn && !showAnimationState && (
-          <LoginPage
-            setIsLoggedIn={showAnimation}
-            isLoggedIn={isLoggedIn}
-          />
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        {showAnimationState && <LoadingAnimation />}
+        {isLoggedIn && !showAnimationState && (
+          <>
+            <Menu
+              changeCategory={changeCategory}
+              setIsLoggedIn={showAnimation}
+            />
+            <Main
+              list={list}
+              categories={categories}
+              selectedCategory={selectedCategory}
+              siteList={siteList}
+            />
+          </>
         )}
-    </div>
+        {!isLoggedIn && !showAnimationState && (
+          <LoginPage setIsLoggedIn={showAnimation} isLoggedIn={isLoggedIn} />
+        )}
+      </div>
+    </QueryClientProvider>
   );
 }
 

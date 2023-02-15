@@ -5,6 +5,7 @@ import SelectionField from "../SelectionField/SelectionField";
 import ConfirmAnimation from "../../../Animation/Confirm/ConfirmAnimation";
 import { reducer } from "./TransferReducer";
 import { motion } from "framer-motion";
+import ShowItemsField from "../ShowItems/ShowItemsField";
 
 const containerVariants = {
   hidden: {
@@ -26,6 +27,7 @@ const initialState = {
 };
 
 function Transfer({ list, categories, siteList }) {
+
   const [state, dispatchReducer] = useReducer(reducer, initialState);
   const clearFields = () => {
     dispatchReducer({ type: "setSelectedCategory", payload: "" });
@@ -104,9 +106,9 @@ function Transfer({ list, categories, siteList }) {
           />
         )}
         {state.selectedCategory && (
-          <SelectionField
+          <ShowItemsField
             labelTekst={"Type"}
-            optionList={state.filtredArray}
+            selectedCategory={state.selectedCategory}
             changeHandler={handleTypeChange}
             selectedField={state.selectedType}
           />
@@ -133,7 +135,7 @@ function Transfer({ list, categories, siteList }) {
           <motion.button variants={containerVariants}>Submit</motion.button>
         )}
       </form>
-        {state.success && <ConfirmAnimation />}
+      {state.success && <ConfirmAnimation />}
     </Wrapper>
   );
 }

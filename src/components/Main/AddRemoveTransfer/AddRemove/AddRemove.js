@@ -5,6 +5,7 @@ import checkmark from "../../../Images/Icons/checkmark.png";
 import { reducer } from "./AddRemoveReducer";
 import SelectionField from "../SelectionField/SelectionField";
 import { motion } from "framer-motion";
+import ShowItemsField from "../ShowItems/ShowItemsField";
 
 const containerVariants = {
   hidden: {
@@ -108,9 +109,9 @@ function AddRemove({ categories, list }) {
         />
 
         {state.selectedCategory && (
-          <SelectionField
-            labelTekst={"Type:"}
-            optionList={state.filtredArray}
+          <ShowItemsField
+            labelTekst={"Type"}
+            selectedCategory={state.selectedCategory}
             changeHandler={handleTypeChange}
             selectedField={state.selectedType}
           />

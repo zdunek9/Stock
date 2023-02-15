@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useQuery } from "react-query";
 import AddRemove from "./AddRemove/AddRemove";
 import {
   SelectType,
@@ -7,9 +8,22 @@ import {
   Wrapper,
 } from "./AddRemoveTransfer.style";
 import Transfer from "./Transfer/Transfer";
+import { getAllCategoryDataFromAPI } from "../../../api/axios";
+import LoadingAnimationSmall from "../../Animation/LoadingAnimationSmall";
+import Error from "../../Error/Error";
 
-function AddRemoveTransfer({ categories, list, siteList }) {
+function AddRemoveTransfer({ list, siteList }) {
   const [toggle, setToggle] = useState(true);
+  const { isLoading, isError, error, data } = useQuery(
+    "category",
+    () => getAllCategoryDataFromAPI(),
+    {
+      keepPreviousData: true,
+    }
+  );
+  if (isLoading) return <LoadingAnimationSmall />;
+  if (isError) return <Error message={error} />;
+
   return (
     <Wrapper>
       <SelectType>
@@ -22,14 +36,8 @@ function AddRemoveTransfer({ categories, list, siteList }) {
           <SentImage />
         </div>
       </SelectType>
-      {toggle && (
-        <Transfer
-          list={list}
-          categories={categories}
-          siteList={siteList}
-        />
-      )}
-      {!toggle && <AddRemove categories={categories} list={list} />}
+      {toggle && <Transfer list={list} categories={data} siteList={siteList} />}
+      {!toggle && <AddRemove categories={data} list={list} />}
     </Wrapper>
   );
 }

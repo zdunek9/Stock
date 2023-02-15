@@ -6,12 +6,12 @@ import logout from "../Images/Icons/logout.png";
 
 const menuCategory = [
   "all",
-  "laptop",
-  "monitor",
-  "lexmark",
-  "zebra",
-  "cable",
-  "telephone",
+  "laptops",
+  "fragrances",
+  "skincare",
+  "groceries",
+  "home-decoration",
+  "smartphones",
   "other",
   "history",
 ];
