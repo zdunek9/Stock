@@ -11,6 +11,7 @@ export const getCategoryDataFromAPI = async (category) => {
   const response = await axios.get(
     `https://dummyjson.com/products/category/${category}`
   );
+  console.log(response.data);
   return response.data;
 };
 
