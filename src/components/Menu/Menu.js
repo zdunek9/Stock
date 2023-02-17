@@ -4,21 +4,14 @@ import { FiChevronLeft } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import logout from "../Images/Icons/logout.png";
 
-const menuCategory = [
-  "all",
-  "laptops",
-  "fragrances",
-  "skincare",
-  "groceries",
-  "home-decoration",
-  "smartphones",
-  "other",
-  "history",
-];
-
-function Menu({ changeCategory, setIsLoggedIn }) {
+function Menu({ changeCategory, setIsLoggedIn, menuCategory }) {
   const [singleCategory, setSingleCategory] = useState("All");
   const selectCategory = (category) => {
+    if (category === "all") {
+      setSingleCategory(category);
+      changeCategory("");
+      return;
+    }
     setSingleCategory(category);
     changeCategory(category);
   };
@@ -29,7 +22,7 @@ function Menu({ changeCategory, setIsLoggedIn }) {
       </Name>
       <ItemList>
         {menuCategory.map((item) => (
-          <ListItem onClick={() => selectCategory(item)} key={item.id}>
+          <ListItem key={item} onClick={() => selectCategory(item)}>
             <div>
               <img src={require(`../Images/Icons/${item}.png`)} alt={item} />
               {singleCategory === item ? (

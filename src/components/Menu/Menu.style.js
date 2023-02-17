@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 300px;
+  width: 340px;
   height: 100%;
   margin-right: 20px;
   background-color: var(--gray1);
@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     width: 100px;
     margin-right: 10px;
   }
@@ -32,7 +32,7 @@ export const ItemList = styled.ul`
   img {
     height: 23px;
   }
-  @media (max-height: 800px){
+  @media (max-width: 1000px) {
     margin:10px 0;
 }
 `;
@@ -46,7 +46,7 @@ export const Name = styled.div`
     margin: 0;
     padding: 0 40px;
   }
-  @media (max-width: 900px){
+  @media (max-width: 1000px) {
     display: none;
 }
 `;
@@ -56,7 +56,7 @@ export const ListItem = styled.li`
   justify-content: space-between;
   margin: 0;
   align-items: center;
-  padding: 20px 30px;
+  padding: 20px;
   cursor: pointer;
 
   svg {
@@ -68,7 +68,7 @@ export const ListItem = styled.li`
     font-weight: 700;
     font-size: 1rem;
   }
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     p {
       display: none;
     }
@@ -98,7 +98,7 @@ export const LogoutButton = styled.div`
   img {
     height: 23px;
   }
-  @media (max-width: 900px){
+  @media (max-width: 1000px) {
     p{
       display: none;
     }

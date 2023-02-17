@@ -12,7 +12,7 @@ import SearchBar from "./SearchBar/SearchBar";
 import History from "./History/History";
 import AddRemoveTransfer from "./AddRemoveTransfer/AddRemoveTransfer";
 
-function Main({ list, categories, selectedCategory, siteList }) {
+function Main({ selectedCategory, siteList }) {
   const [openAddRemove, setOpenAddRemove] = useState(false);
 
   const toggle = () => {
@@ -29,7 +29,7 @@ function Main({ list, categories, selectedCategory, siteList }) {
           <h3>Hello, Admin</h3>
           <img src={hello} alt="hello icon" />
         </ImgWrapper>
-        <SearchBar list={list} />
+        {/* <SearchBar /> */}
       </Menu>
       <ButtonWrapper>
         <ControlButton onClick={() => toggle()}>
@@ -38,13 +38,11 @@ function Main({ list, categories, selectedCategory, siteList }) {
       </ButtonWrapper>
       {openAddRemove && (
         <AddRemoveTransfer
-          categories={categories}
-          list={list}
           siteList={siteList}
         />
       )}
       {selectedCategory !== "history" && !openAddRemove && (
-        <ItemList list={list} selectedCategory={selectedCategory} />
+        <ItemList selectedCategory={selectedCategory} />
       )}
       {selectedCategory === "history" && !openAddRemove && <History />}
     </Wrapper>

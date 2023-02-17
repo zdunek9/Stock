@@ -10,7 +10,7 @@ function ShowItemsField({
   changeHandler,
   selectedField,
 }) {
-  const { isLoading, isError, error, data, refetch } = useQuery(
+  const { isFetching, isError, error, data, refetch } = useQuery(
     "categoryType",
     () => getCategoryDataFromAPI(selectedCategory),
     {
@@ -20,7 +20,7 @@ function ShowItemsField({
   useEffect(() => {
     refetch();
   }, [selectedCategory]);
-  if (isLoading) return <p>loading</p>;
+  if (isFetching) return <p>loading</p>;
   if (isError) return <p>Error : {error}</p>;
   const content = data.products.map((item) => item.title);
   return (

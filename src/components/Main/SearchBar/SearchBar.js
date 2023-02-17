@@ -8,7 +8,7 @@ function SearchBar({ list }) {
   const tab = [];
   if (tab.length === 0) {
     // Create new list for search bar and push via props to component
-    list.forEach((item) => tab.push({ label: item.Name }));
+    list.products.forEach((item) => tab.push({ label: item.title }));
   }
   if(value){
     // in future do something with selected value

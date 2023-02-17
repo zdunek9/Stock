@@ -8,8 +8,6 @@ export const reducer = (state, action) => {
       return { ...state, selectedType: action.payload };
     case "setNumberOfItems":
       return { ...state, numberOfItems: action.payload };
-    case "setFiltredArray":
-      return { ...state, filtredArray: action.payload };
     case "setSuccess":
       return { ...state, success: action.payload };
     case "setShowAllItemsAvailable":
