@@ -14,7 +14,6 @@ const menuCategory = [
   "groceries",
   "home-decoration",
   "smartphones",
-  "other",
   "history",
 ];
 const siteList = ["Lodz", "Gdansk", "Barcelona", "Werona", "Porto"];

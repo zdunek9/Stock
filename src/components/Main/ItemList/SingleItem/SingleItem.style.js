@@ -18,8 +18,24 @@ export const SingleItemWrapper = styled.li`
   }
   @media (max-width: 1000px) {
     p {
+      width: 150px;
       font-size: 0.8rem;
       margin: 10px;
+    }
+  }
+  @media (max-width: 700px) {
+    p {
+      font-size: 0.6rem;
+      margin: 4px;
+    }
+    p:nth-child(1) {
+      width: 60px;
+    }
+    p:nth-child(3) {
+      width: 45px;
+    }
+    p:nth-child(4) {
+      width: 40px;
     }
   }
 `;

@@ -1,18 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.ul`
-  height: 750px;
   margin-right: 20px;
-  overflow-y: auto;
-  @media (max-width: 1000px) {
-    height: 80%;
-  }
-  @media (max-height: 800px) {
-    height: 70%;
-  }
+  overflow-x: auto;
+  margin-bottom: 20px;
+  word-wrap: break-word;
 `;
-
-
 
 export const ListTopBar = styled.li`
   display: flex;
@@ -35,10 +28,24 @@ export const ListTopBar = styled.li`
   }
   @media (max-width: 1000px) {
     p {
-      font-size: 1.1rem;
+      width: 150px;
+      font-size: 0.8rem;
       margin: 10px;
     }
   }
+  @media (max-width: 700px) {
+    p {
+      font-size: 0.6rem;
+      margin: 4px;
+    }
+    p:nth-child(1) {
+      width: 60px;
+    }
+    p:nth-child(3) {
+      width: 45px;
+    }
+    p:nth-child(4) {
+      width: 40px;
+    }
+  }
 `;
-
-

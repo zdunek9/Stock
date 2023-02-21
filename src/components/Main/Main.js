@@ -29,7 +29,7 @@ function Main({ selectedCategory, siteList }) {
           <h3>Hello, Admin</h3>
           <img src={hello} alt="hello icon" />
         </ImgWrapper>
-        {/* <SearchBar /> */}
+        <SearchBar />
       </Menu>
       <ButtonWrapper>
         <ControlButton onClick={() => toggle()}>

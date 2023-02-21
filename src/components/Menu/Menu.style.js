@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 340px;
+  width: 355px;
   height: 100%;
   margin-right: 20px;
   background-color: var(--gray1);
@@ -19,6 +19,7 @@ export const Wrapper = styled.div`
 export const ItemList = styled.ul`
   flex-grow: 1;
   margin: 30px 0;
+
   div {
     display: flex;
     align-items: center;
@@ -33,8 +34,15 @@ export const ItemList = styled.ul`
     height: 23px;
   }
   @media (max-width: 1000px) {
-    margin:10px 0;
-}
+    margin: 10px 0;
+    margin-top: 20vh;
+    .selectedCategory {
+      background-color: white;
+    }
+  }
+  @media (max-height: 600px) {
+    margin-top: unset;
+  }
 `;
 
 export const Name = styled.div`
@@ -48,7 +56,7 @@ export const Name = styled.div`
   }
   @media (max-width: 1000px) {
     display: none;
-}
+  }
 `;
 
 export const ListItem = styled.li`
@@ -69,13 +77,19 @@ export const ListItem = styled.li`
     font-size: 1rem;
   }
   @media (max-width: 1000px) {
+    justify-content: center;
+
+    svg {
+      display: none;
+    }
+
     p {
       display: none;
     }
   }
-  @media (max-height: 800px){
+  @media (max-height: 750px) {
     padding: 12px 30px;
-}
+  }
 `;
 
 export const LogoutButton = styled.div`
@@ -99,8 +113,8 @@ export const LogoutButton = styled.div`
     height: 23px;
   }
   @media (max-width: 1000px) {
-    p{
+    p {
       display: none;
     }
-}
+  }
 `;

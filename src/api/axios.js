@@ -19,3 +19,10 @@ export const getAllCategoryDataFromAPI = async () => {
   const response = await axios.get("https://dummyjson.com/products/categories");
   return response.data;
 };
+
+export const getSingleDataFromAPI = async (phrase) => {
+  const response = await axios.get(
+    `https://dummyjson.com/products/search?q=${phrase}`
+  );
+  return response.data;
+};

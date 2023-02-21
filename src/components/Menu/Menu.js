@@ -22,7 +22,11 @@ function Menu({ changeCategory, setIsLoggedIn, menuCategory }) {
       </Name>
       <ItemList>
         {menuCategory.map((item) => (
-          <ListItem key={item} onClick={() => selectCategory(item)}>
+          <ListItem
+            key={item}
+            onClick={() => selectCategory(item)}
+            className={`${singleCategory === item ? "selectedCategory" : ""}`}
+          >
             <div>
               <img src={require(`../Images/Icons/${item}.png`)} alt={item} />
               {singleCategory === item ? (
