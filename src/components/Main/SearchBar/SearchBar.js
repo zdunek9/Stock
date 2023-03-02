@@ -9,26 +9,18 @@ import Error from "../../Error/Error";
 
 function SearchBar() {
   const [value, setValue] = useState("");
-  const tab = [];
-  // if (tab.length === 0) {
-  //   // Create new list for search bar and push via props to component
-  //   list.products.forEach((item) => tab.push({ label: item.title }));
-  // }
-  // if(value){
-  //   // in future do something with selected value
-  // }
-  const { error, data, isFetching, isLoading, isPreviousData, refetch } =
+
+  const { error, data, isFetching, isLoading, refetch } =
     useQuery("AllCategory", () => getSingleDataFromAPI(value), {
       keepPreviousData: true,
       refetchOnWindowFocus: false,
     });
   useEffect(() => {
     refetch();
-    console.log("refetch");
   }, [value]);
-  // if (isFetching) return <LoadingAnimationSmall />;
-  // if (isLoading) return <LoadingAnimationSmall />;
-  // if (error) return <Error message={error} />;
+  if (isFetching) return <LoadingAnimationSmall />;
+  if (isLoading) return <LoadingAnimationSmall />;
+  if (error) return <Error message={error} />;
   return (
     <InputFieldWrapp>
       <Autocomplete

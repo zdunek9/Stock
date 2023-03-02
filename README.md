@@ -7,11 +7,12 @@ You can login to the application: user: admin, password: password.
 
 ## Features
 
++ Dummy data downloaded from https://dummyjson.com/
 + Fleeing sign up confirm button
 + Basic account veryfication
 + RWD support
 + Status icon depends on item quantity 
 + Sort by quantity, status, user, date, comment and history name
-
++ Created pagination
 
 To preview the application go here: https://sapp91.netlify.app
