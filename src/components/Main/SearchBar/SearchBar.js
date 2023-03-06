@@ -10,11 +10,14 @@ import Error from "../../Error/Error";
 function SearchBar() {
   const [value, setValue] = useState("");
 
-  const { error, data, isFetching, isLoading, refetch } =
-    useQuery("AllCategory", () => getSingleDataFromAPI(value), {
+  const { error, data, isFetching, isLoading, refetch } = useQuery(
+    "AllCategory",
+    () => getSingleDataFromAPI(value),
+    {
       keepPreviousData: true,
       refetchOnWindowFocus: false,
-    });
+    }
+  );
   useEffect(() => {
     refetch();
   }, [value]);
@@ -32,7 +35,13 @@ function SearchBar() {
         // value={value}
         onChange={(newValue) => setValue(newValue)}
         sx={{ width: 400 }}
-        renderInput={(params) => <TextField {...params} label="Search..." />}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="
+        not working yet..."
+          />
+        )}
       />
       <img src={bell} alt="bell" />
     </InputFieldWrapp>
