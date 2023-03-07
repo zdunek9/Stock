@@ -8,6 +8,13 @@ export const getAllDataFromAPI = async (skip = 0) => {
   return response.data;
 };
 
+export const getAllItemsFromAPI = async () => {
+  const response = await axios.get(
+    `https://dummyjson.com/products`
+  );
+  return response.data;
+};
+
 export const getCategoryDataFromAPI = async (category) => {
   const response = await axios.get(
     `https://dummyjson.com/products/category/${category}`
