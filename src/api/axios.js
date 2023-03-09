@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getAllDataFromAPI = async (skip = 0) => {
+export const getAllDataFromAPI = async (skip = 1) => {
   const setPage = (skip - 1) * 10;
   const response = await axios.get(
     `https://dummyjson.com/products/?limit=10&skip=${setPage}`
@@ -9,9 +9,7 @@ export const getAllDataFromAPI = async (skip = 0) => {
 };
 
 export const getAllItemsFromAPI = async () => {
-  const response = await axios.get(
-    `https://dummyjson.com/products`
-  );
+  const response = await axios.get(`https://dummyjson.com/products/?limit=0`);
   return response.data;
 };
 

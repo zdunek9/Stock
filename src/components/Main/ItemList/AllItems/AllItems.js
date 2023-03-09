@@ -19,7 +19,7 @@ function AllItems() {
   const [page, setPage] = useState(1);
 
   const { error, data, isFetching, isPreviousData, refetch } = useQuery(
-    "AllCategory",
+    "AllCategoryShow",
     () => getAllDataFromAPI(page),
     {
       keepPreviousData: true,
@@ -29,8 +29,9 @@ function AllItems() {
   useEffect(() => {
     refetch();
   }, [page]);
+
   if (isFetching) return <LoadingAnimationSmall />;
-  if (error) return <Error message={error} />;
+  if (error) return <Error message={error.message} />;
 
   const nextPage = () => setPage((prev) => prev + 1);
   const prevPage = () => setPage((prev) => prev - 1);

@@ -22,7 +22,7 @@ function SingleItem({ selectedCategory }) {
     refetch();
   }, [selectedCategory]);
   if (isFetching) return <LoadingAnimationSmall />;
-  if (error) return <Error message={error} />;
+  if (error) return <Error message={error.message}/>;
   return data.products.map((item) => (
     <SingleItemWrapper key={item.title}>
       <p>{item.brand}</p>
