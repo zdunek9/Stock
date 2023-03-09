@@ -12,7 +12,7 @@ import { getAllCategoryDataFromAPI } from "../../../api/axios";
 import LoadingAnimationSmall from "../../Animation/LoadingAnimationSmall";
 import Error from "../../Error/Error";
 
-function AddRemoveTransfer({ list, siteList }) {
+function AddRemoveTransfer({ siteList }) {
   const [toggle, setToggle] = useState(true);
   const { isLoading, isError, error, data } = useQuery(
     "category",
@@ -36,8 +36,8 @@ function AddRemoveTransfer({ list, siteList }) {
           <SentImage />
         </div>
       </SelectType>
-      {toggle && <Transfer list={list} categories={data} siteList={siteList} />}
-      {!toggle && <AddRemove categories={data} list={list} />}
+      {toggle && <Transfer categories={data} siteList={siteList} />}
+      {!toggle && <AddRemove categories={data} />}
     </Wrapper>
   );
 }

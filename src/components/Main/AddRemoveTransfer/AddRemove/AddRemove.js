@@ -24,17 +24,15 @@ const initialState = {
   numberOfItems: "",
   filtredArray: [],
   success: false,
-  showAllItemsAvailable: "",
 };
 
-function AddRemove({ categories, list }) {
+function AddRemove({ categories }) {
   const [state, dispatchReducer] = useReducer(reducer, initialState);
 
   const clearFields = () => {
     dispatchReducer({ type: "setSelectedCategory", payload: "" });
     dispatchReducer({ type: "setSelectedType", payload: "" });
     dispatchReducer({ type: "setNumberOfItems", payload: "" });
-    dispatchReducer({ type: "setShowAllItemsAvailable", payload: "" });
   };
 
   const handleCategoryChange = (event) => {
@@ -44,11 +42,6 @@ function AddRemove({ categories, list }) {
         type: "setSelectedCategory",
         payload: event.target.value,
       });
-      const newUserList = list.filter(
-        (item) => item.Category === event.target.value
-      );
-      const toArray = newUserList.map((element) => element.Name);
-      dispatchReducer({ type: "setFiltredArray", payload: toArray });
     }
   };
 
@@ -58,11 +51,6 @@ function AddRemove({ categories, list }) {
       return;
     }
     dispatchReducer({ type: "setSelectedType", payload: event.target.value });
-    const findItem = list.find((item) => item.Name === event.target.value);
-    dispatchReducer({
-      type: "setShowAllItemsAvailable",
-      payload: findItem.Quantity,
-    });
   };
   const handleQuantity = (event) => {
     dispatchReducer({ type: "setNumberOfItems", payload: event.target.value });
@@ -107,7 +95,6 @@ function AddRemove({ categories, list }) {
           changeHandler={handleCategoryChange}
           selectedField={state.selectedCategory}
         />
-
         {state.selectedCategory && (
           <ShowItemsField
             labelTekst={"Type"}
@@ -115,9 +102,6 @@ function AddRemove({ categories, list }) {
             changeHandler={handleTypeChange}
             selectedField={state.selectedType}
           />
-        )}
-        {state.showAllItemsAvailable && (
-          <p>Available items: {state.showAllItemsAvailable}</p>
         )}
         {state.selectedType && (
           <motion.div variants={containerVariants}>

@@ -10,8 +10,6 @@ export const reducer = (state, action) => {
       return { ...state, numberOfItems: action.payload };
     case "setSuccess":
       return { ...state, success: action.payload };
-    case "setShowAllItemsAvailable":
-      return { ...state, showAllItemsAvailable: action.payload };
     default:
       throw new Error();
   }

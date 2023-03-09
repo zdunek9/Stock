@@ -26,13 +26,11 @@ const initialState = {
 };
 
 function Transfer({ categories, siteList }) {
-
   const [state, dispatchReducer] = useReducer(reducer, initialState);
   const clearFields = () => {
     dispatchReducer({ type: "setSelectedCategory", payload: "" });
     dispatchReducer({ type: "setSelectedType", payload: "" });
     dispatchReducer({ type: "setNumberOfItems", payload: "" });
-    dispatchReducer({ type: "setShowAllItemsAvailable", payload: "" });
   };
 
   const handleSiteChange = (event) => {
@@ -102,9 +100,6 @@ function Transfer({ categories, siteList }) {
             selectedField={state.selectedType}
           />
         )}
-        {/* {state.showAllItemsAvailable && (
-          <p>Available items: {state.showAllItemsAvailable}</p>
-        )} */}
         {state.selectedType && (
           <motion.div variants={containerVariants}>
             <label>

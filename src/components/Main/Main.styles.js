@@ -6,17 +6,22 @@ export const Wrapper = styled.div`
   position: relative;
   overflow-y: auto;
 `;
+export const PartingWrapper = styled.div`
+  display: flex;
+  height: 100vh;
+  width: 100%;
+`;
 
-export const Menu = styled.div`
+export const MenuSection = styled.div`
   height: 100px;
   width: 100%;
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media (max-width: 900px){
+  @media (max-width: 900px) {
     justify-content: flex-end;
-}
+  }
 `;
 
 export const ImgWrapper = styled.div`
@@ -29,9 +34,9 @@ export const ImgWrapper = styled.div`
   h3 {
     font-size: 1.4rem;
   }
-  @media (max-width: 900px){
+  @media (max-width: 900px) {
     display: none;
-}
+  }
 `;
 export const ControlButton = styled.button`
   margin-bottom: 20px;
@@ -48,7 +53,7 @@ export const ControlButton = styled.button`
 export const ButtonWrapper = styled.div`
   width: 100%;
   text-align: right;
-  @media (max-width: 900px){
+  @media (max-width: 900px) {
     text-align: center;
-}
+  }
 `;
