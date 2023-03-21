@@ -1,9 +1,9 @@
 # Stock App
-The application allows you to preview the stock. Currently it is in the visual phase, logical it does not work properly or at all, no global store for now.
-I used framer-motion for the animation. The application is written in react.
+The application allows you to preview the stock. No global store created, no redux, just a lot of API calls, all items from the API ( except history, its hard-coded )
+I used framer-motion for the animation. The application created in react.
 
-Log in and user database of the application will probably not be implemented, so creating a new user, actually does not create one.
-You can login to the application: user: admin, password: password.
+Application have basic user authentication and creating a new user, actually does not create one.
+You can login as: "user: admin, password: password."
 
 ## Features
 
