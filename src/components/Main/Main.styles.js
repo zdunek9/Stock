@@ -13,7 +13,7 @@ export const PartingWrapper = styled.div`
 `;
 
 export const MenuSection = styled.div`
-  height: 100px;
+  height: 80px;
   width: 100%;
   margin-top: 10px;
   display: flex;
@@ -39,7 +39,7 @@ export const ImgWrapper = styled.div`
   }
 `;
 export const ControlButton = styled.button`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-right: 20px;
   border: unset;
   font-size: 1.1rem;

@@ -7,7 +7,7 @@ export const SingleItemWrapper = styled.li`
   p {
     text-align: center;
     width: 200px;
-    margin: 15px;
+    margin: 14px;
     font-weight: 500;
   }
 

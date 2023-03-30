@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.ul`
   margin-right: 20px;
   overflow-x: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   word-wrap: break-word;
 `;
 
