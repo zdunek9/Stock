@@ -35,9 +35,12 @@ function AllItems() {
 
   const nextPage = () => setPage((prev) => prev + 1);
   const prevPage = () => setPage((prev) => prev - 1);
-  const pagesArray = Array(data.total / 10)
-    .fill()
-    .map((_, index) => index + 1);
+  // const pagesArray = Array(data.total / 10)
+  //   .fill()
+  //   .map((_, index) => index + 1); old one 
+  const pagesArray = Array(Math.ceil(data.total / 10))
+  .fill()
+  .map((_, index) => index + 1);
 
   return (
     <>
